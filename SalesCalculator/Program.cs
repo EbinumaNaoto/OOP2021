@@ -9,7 +9,7 @@ namespace SalesCalculator {
     class Program {
 
         static void Main(string[] args) {
-
+            
         }
     }
 }
