@@ -17,9 +17,8 @@ namespace DistanceConveter {
 
         // メートルからフィートへの対応表を出力
         private static void PrintMeterToFeelList(int state,int stop) {
-            FeetConverter feetConverter = new FeetConverter();
             for (int meter = state; meter <= stop; meter++) {
-                double feet = feetConverter.FeetToMeter(meter);
+                double feet = FeetConverter.MeterToFeet(meter);
                 Console.WriteLine("{0} m = {1:0.0000} ft", meter, feet);
             }
         }
@@ -27,8 +26,7 @@ namespace DistanceConveter {
         // フィートからメートルへの対応表を出力
         private static void PrintFeelToMeterList(int state,int stop) {           
             for (int feet = state; feet <= stop; feet++) {
-                FeetConverter feetConverter = new FeetConverter();
-                double meter = feetConverter.FeetToMeter(feet);
+                double meter = FeetConverter.FeetToMeter(feet);
                 Console.WriteLine("{0} ft = {1:0.0000} m", feet, meter);
             }
         }

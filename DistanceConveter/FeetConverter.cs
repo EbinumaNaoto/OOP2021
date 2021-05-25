@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace DistanceConveter {
 
-    class FeetConverter {
+    public static class FeetConverter {
 
         private const double ratio = 0.3048;
 
         // フィートからメートルを求める
-        public double FeetToMeter(int feet) {
+        public static double FeetToMeter(int feet) {
             return feet * ratio;
         }
         // メートルからフィートを求める
-        public double MeterToFeet(int meter) {
+        public static double MeterToFeet(int meter) {
             return meter / ratio;
         }
     }
