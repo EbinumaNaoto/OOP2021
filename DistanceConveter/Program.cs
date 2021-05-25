@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DistanceConverter {
+namespace DistanceConveter {
     class Program {
-        static void Main(string[] args) {
+
+        public static void Main(string[] args) {
             if (args.Length >= 1 && args[0] == "-tom") {
                 PrintFeelToMeterList(1,10);
             } else {
@@ -16,8 +17,9 @@ namespace DistanceConverter {
 
         // メートルからフィートへの対応表を出力
         private static void PrintMeterToFeelList(int state,int stop) {
+            FeetConverter feetConverter = new FeetConverter();
             for (int meter = state; meter <= stop; meter++) {
-                double feet = MeterToFeet(meter);
+                double feet = feetConverter.FeetToMeter(meter);
                 Console.WriteLine("{0} m = {1:0.0000} ft", meter, feet);
             }
         }
@@ -25,18 +27,11 @@ namespace DistanceConverter {
         // フィートからメートルへの対応表を出力
         private static void PrintFeelToMeterList(int state,int stop) {           
             for (int feet = state; feet <= stop; feet++) {
-                double meter = FeetToMeter(feet);
+                FeetConverter feetConverter = new FeetConverter();
+                double meter = feetConverter.FeetToMeter(feet);
                 Console.WriteLine("{0} ft = {1:0.0000} m", feet, meter);
             }
         }
-
-        // フィートからメートルを求める
-        static double FeetToMeter(int feet) {
-            return feet * 0.3048;
-        }
-        // メートルからフィートを求める
-        static double MeterToFeet(int meter) {
-            return meter / 0.3048;
-        }
+        
     }
 }
