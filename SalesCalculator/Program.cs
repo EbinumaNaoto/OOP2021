@@ -10,9 +10,12 @@ namespace SalesCalculator {
     class Program {
 
         static void Main(string[] args) {
-            
+            //List<Sale> sales = ReadSales("sales.csv");
+
         }
 
+        // List2-15
+        // 売上データを読み込み、Saleオブジェクトのリストを返す
         private static List<Sale> ReadSales(string filePath) {
             List<Sale> sales = new List<Sale>();
             string[] lines = File.ReadAllLines(filePath);
