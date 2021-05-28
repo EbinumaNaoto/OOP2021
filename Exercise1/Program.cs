@@ -9,10 +9,11 @@ namespace Exercise1 {
 
         static void Main(string[] args) {
             //2.1.3
-            var songs = new Song[3];
-            songs[0] = new Song("光、再考", "amazarashi", 339);
-            songs[1] = new Song("つじつま合わせに生まれた僕等", "amazarashi", 340);
-            songs[2] = new Song("少年少女", "amazarashi", 345);
+            var songs = new Song[] {
+                new Song("光、再考", "amazarashi", 339),
+                new Song("つじつま合わせに生まれた僕等", "amazarashi", 340),
+                new Song("少年少女", "amazarashi", 345)
+            };
             PrintSongs(songs);
         }
 
