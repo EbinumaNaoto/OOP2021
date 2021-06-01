@@ -22,7 +22,7 @@ namespace Exercise1 {
             foreach (var song in songs) {
                 Console.WriteLine($"アーティスト名: {song.ArtistName}");
                 Console.WriteLine($"タイトル: {song.Title}");
-                Console.WriteLine("演奏時間: " + (song.Length / 60) + ":" + (song.Length % 60));
+                Console.WriteLine("演奏時間: {0:m\:ss}",TimeSpan.FromSeconds(song.Length));
                 Console.WriteLine();
             }
         }
