@@ -22,9 +22,15 @@ namespace Exercise1 {
             foreach (var song in songs) {
                 Console.WriteLine($"アーティスト名: {song.ArtistName}");
                 Console.WriteLine($"タイトル: {song.Title}");
-                Console.WriteLine("演奏時間: {0:m\:ss}",TimeSpan.FromSeconds(song.Length));
+                Console.WriteLine(@"演奏時間: {0:m\:ss}",TimeSpan.FromSeconds(song.Length));
                 Console.WriteLine();
             }
         }
+        /*
+            @"{0}, {1} {2:m\:ss}"について
+            {}の中で、:は特別な意味を持っている。そのため、:を、文字':'として表示させるために、
+            \:としている。なお、\:をエスケープシーケンスと認識させないように、@を先頭に付加し、
+            逐語的リテラル文字列にしている。
+        */
     }
 }
