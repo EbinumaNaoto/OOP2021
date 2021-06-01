@@ -22,7 +22,7 @@ namespace Exercize2 {
         private static void PrintMeterToInchList(int start, int stop) {
             for (int meter = start; meter < stop; meter++) {
                 double inch = InchConverter.FromMeter(meter);
-                Console.WriteLine("{0} m = {1:0.0000} inch", meter);
+                Console.WriteLine("{0} m = {1:0.0000} inch", meter,inch);
             }
         }
 

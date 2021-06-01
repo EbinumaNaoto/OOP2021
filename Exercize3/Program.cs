@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Exercize3 {
     class Program {
+
         static void Main(string[] args) {
+
         }
     }
 }
