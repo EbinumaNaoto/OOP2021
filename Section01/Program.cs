@@ -41,8 +41,10 @@ namespace Section01 {
         }
 
         private static void Exercise1_3(List<int> numbers) {
-            var query = numbers.Where(n => n >= 50);
-            foreach (var n in query) {
+            //メソッドチェーンでの方法
+            //numbers.Where(n => n >= 50).ToList().ForEach(Console.WriteLine);
+
+            foreach (var n in numbers.Where(n => n >= 50)) {
                 Console.Write("{0}, ",n);
             }
             Console.WriteLine();
