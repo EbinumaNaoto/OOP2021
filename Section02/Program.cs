@@ -32,20 +32,20 @@ namespace Section02 {
         }
 
         private static void Exercise2_2(List<string> names) {
-            Console.WriteLine(names.Count(s => s.Contains("o")));
+            Console.WriteLine(names.Count(s => s.Contains('o')));
         }
 
         private static void Exercise2_3(List<string> names) {
-            var query = names.Where(s => s.Contains("o")).ToList();
-            query.ForEach(s => Console.Write("\"{0}\", ",s));
+            var array = names.Where(s => s.Contains('o')).ToArray();
+            foreach (var name in array)
+                Console.Write("\"{0}\", ", name);
             Console.WriteLine();
         }
 
         private static void Exercise2_4(List<string> names) {
             var indexs = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
-            foreach (var i in indexs) {
-                Console.Write("{0}, ",i);
-            }
+            foreach (var i in indexs)
+                Console.Write("{0}, ", i);
             Console.WriteLine();
         }
     }
