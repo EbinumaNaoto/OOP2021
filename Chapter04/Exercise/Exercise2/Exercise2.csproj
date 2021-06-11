@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\DistanceConveter\DistanceConveter.csproj">
+      <Project>{a7b930de-4c67-4238-9853-a1cf5a5b53f0}</Project>
+      <Name>DistanceConveter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Exercise1\Exercise1.csproj">
       <Project>{64a5083d-641f-4d74-8170-8d042ffdeae8}</Project>
       <Name>Exercise1</Name>
