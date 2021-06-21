@@ -36,11 +36,11 @@ namespace Test01 {
 
             var dict = new Dictionary<string, int>(); //科目別に集計した点数を格納するDictionary生成
 
-            foreach (var score in _score) {
-                if (dict.ContainsKey(score.Subject)) {
-                    dict[score.Subject] += score.Score; //科目名が同じsocreを集計しながら、dictへ格納
+            foreach (var student in _score) {
+                if (dict.ContainsKey(student.Subject)) {
+                    dict[student.Subject] += student.Score; //科目名が同じsocreを集計しながら、dictへ格納
                 } else {
-                    dict[score.Subject] = score.Score; //科目名が違った場合、dictの新たな科目名に、scoreを格納
+                    dict[student.Subject] = student.Score; //科目名が違った場合、dictの新たな科目名に、scoreを格納
                 }
             }
             return dict;

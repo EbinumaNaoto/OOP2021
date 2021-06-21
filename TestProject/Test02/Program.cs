@@ -45,7 +45,7 @@ namespace Test02 {
         //　　　　出力結果【94】
         private static void Exercise02(List<int> numbers) {
 
-            Console.Write(numbers.Max());
+            Console.Write(numbers.Where(n => n%2 == 0).Max());
 
         }
         //問題３　昇順に並べて表示（遅延実行とする）
@@ -54,7 +54,7 @@ namespace Test02 {
 
             var orderByNumbers = numbers.OrderBy(n => n);
             foreach (var number in orderByNumbers) {
-                Console.Write($"{number},");
+                Console.Write($"{number} ");
             }
 
         }
@@ -63,7 +63,7 @@ namespace Test02 {
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(List<int> numbers) {
 
-            numbers.Where(n => 10 <= n && n <= 50).ToList().ForEach(n => Console.Write($"{n},"));
+            numbers.Where(n => 10 <= n && n <= 50).ToList().ForEach(n => Console.Write($"{n} "));
 
         }
     }
