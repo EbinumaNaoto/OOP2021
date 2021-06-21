@@ -37,7 +37,7 @@ namespace Test02 {
         //　　　　出力結果【618】
         private static void Exercise01(List<int> numbers) {
 
-
+            Console.Write(numbers.Sum());
 
         }
 
@@ -45,14 +45,17 @@ namespace Test02 {
         //　　　　出力結果【94】
         private static void Exercise02(List<int> numbers) {
 
-
+            Console.Write(numbers.Max());
 
         }
         //問題３　昇順に並べて表示（遅延実行とする）
         //　　　　出力結果【12 14 17 20 31 35 40 48 53 76 87 91 94】
         private static void Exercise03(List<int> numbers) {
 
-
+            var orderByNumbers = numbers.OrderBy(n => n);
+            foreach (var number in orderByNumbers) {
+                Console.Write($"{number},");
+            }
 
         }
 
@@ -60,7 +63,7 @@ namespace Test02 {
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(List<int> numbers) {
 
-
+            numbers.Where(n => 10 <= n && n <= 50).ToList().ForEach(n => Console.Write($"{n},"));
 
         }
     }
