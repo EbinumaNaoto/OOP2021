@@ -21,7 +21,6 @@ namespace Exercise1 {
             }
             #endregion
 #endif
-            //P158 演習問題5.2からスタート
         }
     }
 }
