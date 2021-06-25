@@ -42,6 +42,10 @@ namespace Exercise3 {
             this.afterReplaceText = new System.Windows.Forms.TextBox();
             this.replaceButton = new System.Windows.Forms.Button();
             this.replaceText = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.breakButton = new System.Windows.Forms.Button();
+            this.inputStringData = new System.Windows.Forms.TextBox();
+            this.outputStringData = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -221,14 +225,57 @@ namespace Exercise3 {
             this.replaceText.Size = new System.Drawing.Size(791, 39);
             this.replaceText.TabIndex = 1;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(26, 606);
+            this.label2.Margin = new System.Windows.Forms.Padding(17, 0, 17, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(137, 37);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "問題5.4";
+            // 
+            // breakButton
+            // 
+            this.breakButton.AutoSize = true;
+            this.breakButton.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.breakButton.Location = new System.Drawing.Point(33, 728);
+            this.breakButton.Name = "breakButton";
+            this.breakButton.Size = new System.Drawing.Size(152, 34);
+            this.breakButton.TabIndex = 2;
+            this.breakButton.Text = "分解";
+            this.breakButton.UseVisualStyleBackColor = true;
+            this.breakButton.Click += new System.EventHandler(this.breakButton_Click);
+            // 
+            // inputStringData
+            // 
+            this.inputStringData.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.inputStringData.Location = new System.Drawing.Point(18, 660);
+            this.inputStringData.Name = "inputStringData";
+            this.inputStringData.Size = new System.Drawing.Size(791, 39);
+            this.inputStringData.TabIndex = 1;
+            // 
+            // outputStringData
+            // 
+            this.outputStringData.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.outputStringData.Location = new System.Drawing.Point(220, 723);
+            this.outputStringData.Multiline = true;
+            this.outputStringData.Name = "outputStringData";
+            this.outputStringData.Size = new System.Drawing.Size(589, 128);
+            this.outputStringData.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(34F, 64F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 616);
+            this.ClientSize = new System.Drawing.Size(821, 863);
             this.Controls.Add(this.replaceButton);
+            this.Controls.Add(this.breakButton);
             this.Controls.Add(this.reproductionWordButton);
+            this.Controls.Add(this.inputStringData);
             this.Controls.Add(this.afterReplaceText);
+            this.Controls.Add(this.outputStringData);
             this.Controls.Add(this.beforeReplaceText);
             this.Controls.Add(this.reproductionWordText);
             this.Controls.Add(this.fourLetterWordListButton);
@@ -243,6 +290,7 @@ namespace Exercise3 {
             this.Controls.Add(this.inputStringText);
             this.Controls.Add(this.afterReplaceLabel);
             this.Controls.Add(this.beforeReplaceLabel);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(17, 16, 17, 16);
@@ -274,6 +322,10 @@ namespace Exercise3 {
         private System.Windows.Forms.TextBox afterReplaceText;
         private System.Windows.Forms.Button replaceButton;
         private System.Windows.Forms.TextBox replaceText;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button breakButton;
+        private System.Windows.Forms.TextBox inputStringData;
+        private System.Windows.Forms.TextBox outputStringData;
     }
 }
 
