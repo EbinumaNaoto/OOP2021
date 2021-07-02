@@ -17,7 +17,7 @@ namespace Exercise1 {
 
         private static void Exercise1_1(string text) {
             var dict = new Dictionary<Char ,int>();
-            foreach (var c in text.ToUpper().OrderBy(c => c)) {
+            foreach (var c in text.ToUpper()) {
                 //大文字小文字を区別しないため全て大文字に変換して処理
                 if ('A' <= c && c <= 'Z') {
                     if (dict.ContainsKey(c))
@@ -27,7 +27,7 @@ namespace Exercise1 {
                 }
             }
             
-            foreach (var item in dict) {
+            foreach (var item in dict.OrderBy(x => x.Key)) {
                 Console.WriteLine($"{item.Key} ,{item.Value}");
             }
             
