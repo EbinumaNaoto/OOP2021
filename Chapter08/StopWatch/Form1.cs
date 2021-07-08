@@ -19,8 +19,28 @@ namespace StopWatch {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
-            TimerDispLabel.Text = stopWatch.Elapsed.ToString(@"hh\:mm\:ss\.ff");
+        private void StopWatchDisplay(object sender, EventArgs e) {
+            TimerDispLabel.Text = stopWatch.Elapsed.ToString(@"hh\:mm\:ss\.ff");            
         }
+
+        private void startButton_Click(object sender, EventArgs e) {
+            stopWatch.Start();
+            timer.Start();
+        }
+
+        private void risetButton_Click(object sender, EventArgs e) {
+            stopWatch.Reset();
+            StopWatchDisplay(sender,e);
+        }
+
+        private void stopButton_Click(object sender, EventArgs e) {
+            stopWatch.Stop();
+            timer.Stop();
+        }
+
+        private void rapButton_Click(object sender, EventArgs e) {
+            rapDispListBox.Items.Insert(0,TimerDispLabel.Text);
+        }
+
     }
 }

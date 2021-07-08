@@ -27,11 +27,11 @@ namespace StopWatch {
             this.components = new System.ComponentModel.Container();
             this.TimerDispLabel = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.rapDispLabel = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
             this.risetButton = new System.Windows.Forms.Button();
             this.rapButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
+            this.rapDispListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // TimerDispLabel
@@ -45,15 +45,10 @@ namespace StopWatch {
             this.TimerDispLabel.TabIndex = 0;
             this.TimerDispLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // rapDispLabel
+            // timer
             // 
-            this.rapDispLabel.AllowDrop = true;
-            this.rapDispLabel.BackColor = System.Drawing.Color.White;
-            this.rapDispLabel.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.rapDispLabel.Location = new System.Drawing.Point(443, 9);
-            this.rapDispLabel.Name = "rapDispLabel";
-            this.rapDispLabel.Size = new System.Drawing.Size(251, 323);
-            this.rapDispLabel.TabIndex = 0;
+            this.timer.Interval = 1;
+            this.timer.Tick += new System.EventHandler(this.StopWatchDisplay);
             // 
             // startButton
             // 
@@ -64,6 +59,7 @@ namespace StopWatch {
             this.startButton.TabIndex = 1;
             this.startButton.Text = "スタート";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // risetButton
             // 
@@ -74,6 +70,7 @@ namespace StopWatch {
             this.risetButton.TabIndex = 1;
             this.risetButton.Text = "リセット";
             this.risetButton.UseVisualStyleBackColor = true;
+            this.risetButton.Click += new System.EventHandler(this.risetButton_Click);
             // 
             // rapButton
             // 
@@ -84,6 +81,7 @@ namespace StopWatch {
             this.rapButton.TabIndex = 1;
             this.rapButton.Text = "ラップ";
             this.rapButton.UseVisualStyleBackColor = true;
+            this.rapButton.Click += new System.EventHandler(this.rapButton_Click);
             // 
             // stopButton
             // 
@@ -94,6 +92,16 @@ namespace StopWatch {
             this.stopButton.TabIndex = 1;
             this.stopButton.Text = "ストップ";
             this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
+            // rapDispListBox
+            // 
+            this.rapDispListBox.FormattingEnabled = true;
+            this.rapDispListBox.ItemHeight = 12;
+            this.rapDispListBox.Location = new System.Drawing.Point(443, 9);
+            this.rapDispListBox.Name = "rapDispListBox";
+            this.rapDispListBox.Size = new System.Drawing.Size(251, 328);
+            this.rapDispListBox.TabIndex = 2;
             // 
             // Form1
             // 
@@ -101,15 +109,15 @@ namespace StopWatch {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(706, 341);
+            this.Controls.Add(this.rapDispListBox);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.rapButton);
             this.Controls.Add(this.risetButton);
             this.Controls.Add(this.startButton);
-            this.Controls.Add(this.rapDispLabel);
             this.Controls.Add(this.TimerDispLabel);
             this.Name = "Form1";
             this.Text = "ストップウォッチ";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.StopWatchDisplay);
             this.ResumeLayout(false);
 
         }
@@ -118,11 +126,11 @@ namespace StopWatch {
 
         private System.Windows.Forms.Label TimerDispLabel;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Label rapDispLabel;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button risetButton;
         private System.Windows.Forms.Button rapButton;
         private System.Windows.Forms.Button stopButton;
+        private System.Windows.Forms.ListBox rapDispListBox;
     }
 }
 
