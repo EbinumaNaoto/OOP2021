@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CarReportSystem1 {
+
+    [Serializable]
+
     public class CarReport {
 
         public DateTime Date { get; set; }      //日付
@@ -24,8 +27,8 @@ namespace CarReportSystem1 {
             外国車,
             その他,
         }
-
-        //引数付きコンストラクタ
+        
+        //メソッド
         public void UpDate(DateTime date, string auther, MakerGroup maker, string carName, string report, Image picture) {
             this.Date = date;
             this.Auther = auther;

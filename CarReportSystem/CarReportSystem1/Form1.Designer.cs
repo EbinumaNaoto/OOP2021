@@ -338,6 +338,7 @@ namespace CarReportSystem1 {
             this.btSave.TabIndex = 7;
             this.btSave.Text = "保存...";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // btExit
             // 
