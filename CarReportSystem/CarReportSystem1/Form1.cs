@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace CarReportSystem1 {
             dgvRegistData.DataSource = listCarReport;
         }
 
+        //終了ボタン
         private void btExit_Click(object sender, EventArgs e) {
             Application.Exit(); //アプリケーションの終了
         }
@@ -81,6 +83,7 @@ namespace CarReportSystem1 {
             }
         }
 
+        //listCarReportを表示する
         private void dgvRegistData_CellClick(object sender, DataGridViewCellEventArgs e) {
             //選択された行のデータを取得
             if (e.RowIndex.Equals(-1))
@@ -98,6 +101,41 @@ namespace CarReportSystem1 {
                     ((RadioButton)rb).Checked = true;
                 }
             }
+        }
+
+        //開くボタン
+        private void btOpen_Click(object sender, EventArgs e) {
+            if (ofdFileOpen.ShowDialog() == DialogResult.OK) {
+                try {
+                    //バイナリ形式で逆シリアル化
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(ofdFileOpen.FileName, FileMode.Open, FileAccess.Read)) {
+                        //逆シリアル化して読み込む
+                        listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvRegistData.DataSource = null;
+                        dgvRegistData.DataSource = listCarReport;
+                    }
+
+                    //読みこんだデータを各コンボボックスに登録する
+                    foreach (var selectedCar in listCarReport) {
+                        setCbAuthor(selectedCar.Auther);
+                        setCbCarName(selectedCar.CarName);
+                    }
+                    /*
+                    //データグリッドビューから取得
+                    for (int i = 0; i < dgvRegistData.RowCount; i++) {
+                        setCbAuthor(dgvRegistData.Rows[i].Cells[1].Value.ToString());
+                        setCbCarName(dgvRegistData.Rows[i].Cells[3].Value.ToString());
+                    }
+                    */
+                } catch (FileNotFoundException fileNotFoundException) {
+                    MessageBox.Show("ファイルが見つかりませんでした。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine(fileNotFoundException.Message);
+                } catch (SerializationException serializationException) {
+                    MessageBox.Show("ファイル形式が違います。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine(serializationException.Message);
+                }
+            }       
         }
 
         //削除ボタン
@@ -118,41 +156,22 @@ namespace CarReportSystem1 {
         //保存ボタン
         private void btSave_Click(object sender, EventArgs e) {
             if (sfdFileSave.ShowDialog() == DialogResult.OK) {
-                //バイナリ形式でシリアル化
-                var bf = new BinaryFormatter();
-                using (FileStream fs = File.Open(sfdFileSave.FileName,FileMode.Create))
-                    bf.Serialize(fs, listCarReport);
-            }
-        }
-
-        //開くボタン
-        private void btOpen_Click(object sender, EventArgs e) {
-            if (ofdFileOpen.ShowDialog() == DialogResult.OK) {
-                //バイナリ形式で逆シリアル化
-                var bf = new BinaryFormatter();
-                using (FileStream fs = File.Open(ofdFileOpen.FileName, FileMode.Open, FileAccess.Read)) {
-                    //逆シリアル化して読み込む
-                    listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
-                    dgvRegistData.DataSource = null;
-                    dgvRegistData.DataSource = listCarReport;
+                try {
+                    //バイナリ形式でシリアル化
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(sfdFileSave.FileName, FileMode.Create))
+                        bf.Serialize(fs, listCarReport);
+                } catch (IOException ioException) {
+                    MessageBox.Show("ファイルを保存できませんでした。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine(ioException.Message);
                 }
+                
             }
         }
 
-        //隠しコマンド
-        private void hiddenCommand() {
-            switch (tbReport.Text.ToLower()) {
-                case "exit":
-                    Application.Exit();
-                    break;
-                case "restart":
-                    Application.Restart();
-                    break;
-                case "today":
-                    dtpDate.Value = DateTime.Today;
-                    break;
-            }
+        //フォーム1に読みもむメソッド
+        private void fmMain_Load(object sender, EventArgs e) {
+            dgvRegistData.Columns[5].Visible = false;
         }
-
     }
 }
