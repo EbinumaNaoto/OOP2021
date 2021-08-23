@@ -66,15 +66,15 @@ namespace CarReportSystem1 {
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(28, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(51, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "日付：";
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(74, 14);
+            this.dtpDate.Location = new System.Drawing.Point(80, 13);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(140, 20);
+            this.dtpDate.Size = new System.Drawing.Size(140, 24);
             this.dtpDate.TabIndex = 1;
             // 
             // label2
@@ -83,7 +83,7 @@ namespace CarReportSystem1 {
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.Location = new System.Drawing.Point(15, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "記録者：";
             // 
@@ -93,7 +93,7 @@ namespace CarReportSystem1 {
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.Location = new System.Drawing.Point(13, 150);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(70, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "レポート：";
             // 
@@ -103,24 +103,24 @@ namespace CarReportSystem1 {
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label4.Location = new System.Drawing.Point(14, 86);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "メーカー：";
             // 
             // cbAuthor
             // 
             this.cbAuthor.FormattingEnabled = true;
-            this.cbAuthor.Location = new System.Drawing.Point(74, 47);
+            this.cbAuthor.Location = new System.Drawing.Point(80, 43);
             this.cbAuthor.Name = "cbAuthor";
-            this.cbAuthor.Size = new System.Drawing.Size(210, 21);
+            this.cbAuthor.Size = new System.Drawing.Size(210, 24);
             this.cbAuthor.TabIndex = 2;
             // 
             // cbCarName
             // 
             this.cbCarName.FormattingEnabled = true;
-            this.cbCarName.Location = new System.Drawing.Point(74, 119);
+            this.cbCarName.Location = new System.Drawing.Point(80, 122);
             this.cbCarName.Name = "cbCarName";
-            this.cbCarName.Size = new System.Drawing.Size(210, 21);
+            this.cbCarName.Size = new System.Drawing.Size(210, 24);
             this.cbCarName.TabIndex = 2;
             // 
             // gbMaker
@@ -131,9 +131,9 @@ namespace CarReportSystem1 {
             this.gbMaker.Controls.Add(this.rbHonda);
             this.gbMaker.Controls.Add(this.rbNissan);
             this.gbMaker.Controls.Add(this.rbToyota);
-            this.gbMaker.Location = new System.Drawing.Point(74, 74);
+            this.gbMaker.Location = new System.Drawing.Point(80, 70);
             this.gbMaker.Name = "gbMaker";
-            this.gbMaker.Size = new System.Drawing.Size(377, 37);
+            this.gbMaker.Size = new System.Drawing.Size(416, 37);
             this.gbMaker.TabIndex = 3;
             this.gbMaker.TabStop = false;
             // 
@@ -141,9 +141,9 @@ namespace CarReportSystem1 {
             // 
             this.rbOther.AutoSize = true;
             this.rbOther.Checked = true;
-            this.rbOther.Location = new System.Drawing.Point(314, 14);
+            this.rbOther.Location = new System.Drawing.Point(337, 14);
             this.rbOther.Name = "rbOther";
-            this.rbOther.Size = new System.Drawing.Size(59, 17);
+            this.rbOther.Size = new System.Drawing.Size(73, 21);
             this.rbOther.TabIndex = 0;
             this.rbOther.TabStop = true;
             this.rbOther.Tag = "5";
@@ -155,7 +155,7 @@ namespace CarReportSystem1 {
             this.rbSubaru.AutoSize = true;
             this.rbSubaru.Location = new System.Drawing.Point(181, 14);
             this.rbSubaru.Name = "rbSubaru";
-            this.rbSubaru.Size = new System.Drawing.Size(57, 17);
+            this.rbSubaru.Size = new System.Drawing.Size(70, 21);
             this.rbSubaru.TabIndex = 0;
             this.rbSubaru.TabStop = true;
             this.rbSubaru.Tag = "3";
@@ -165,9 +165,9 @@ namespace CarReportSystem1 {
             // rbImport
             // 
             this.rbImport.AutoSize = true;
-            this.rbImport.Location = new System.Drawing.Point(244, 14);
+            this.rbImport.Location = new System.Drawing.Point(251, 13);
             this.rbImport.Name = "rbImport";
-            this.rbImport.Size = new System.Drawing.Size(64, 17);
+            this.rbImport.Size = new System.Drawing.Size(80, 21);
             this.rbImport.TabIndex = 0;
             this.rbImport.TabStop = true;
             this.rbImport.Tag = "4";
@@ -179,7 +179,7 @@ namespace CarReportSystem1 {
             this.rbHonda.AutoSize = true;
             this.rbHonda.Location = new System.Drawing.Point(120, 14);
             this.rbHonda.Name = "rbHonda";
-            this.rbHonda.Size = new System.Drawing.Size(55, 17);
+            this.rbHonda.Size = new System.Drawing.Size(68, 21);
             this.rbHonda.TabIndex = 0;
             this.rbHonda.TabStop = true;
             this.rbHonda.Tag = "2";
@@ -191,7 +191,7 @@ namespace CarReportSystem1 {
             this.rbNissan.AutoSize = true;
             this.rbNissan.Location = new System.Drawing.Point(63, 13);
             this.rbNissan.Name = "rbNissan";
-            this.rbNissan.Size = new System.Drawing.Size(51, 17);
+            this.rbNissan.Size = new System.Drawing.Size(63, 21);
             this.rbNissan.TabIndex = 0;
             this.rbNissan.TabStop = true;
             this.rbNissan.Tag = "1";
@@ -203,7 +203,7 @@ namespace CarReportSystem1 {
             this.rbToyota.AutoSize = true;
             this.rbToyota.Location = new System.Drawing.Point(6, 13);
             this.rbToyota.Name = "rbToyota";
-            this.rbToyota.Size = new System.Drawing.Size(51, 17);
+            this.rbToyota.Size = new System.Drawing.Size(64, 21);
             this.rbToyota.TabIndex = 0;
             this.rbToyota.TabStop = true;
             this.rbToyota.Tag = "0";
@@ -212,7 +212,7 @@ namespace CarReportSystem1 {
             // 
             // tbReport
             // 
-            this.tbReport.Location = new System.Drawing.Point(74, 147);
+            this.tbReport.Location = new System.Drawing.Point(80, 147);
             this.tbReport.Multiline = true;
             this.tbReport.Name = "tbReport";
             this.tbReport.Size = new System.Drawing.Size(422, 164);
@@ -224,7 +224,7 @@ namespace CarReportSystem1 {
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label5.Location = new System.Drawing.Point(28, 122);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.Size = new System.Drawing.Size(51, 17);
             this.label5.TabIndex = 0;
             this.label5.Text = "車名：";
             // 
@@ -234,7 +234,7 @@ namespace CarReportSystem1 {
             this.label6.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label6.Location = new System.Drawing.Point(508, 19);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.Size = new System.Drawing.Size(51, 17);
             this.label6.TabIndex = 0;
             this.label6.Text = "画像：";
             // 
@@ -242,9 +242,10 @@ namespace CarReportSystem1 {
             // 
             this.dgvRegistData.AllowUserToAddRows = false;
             this.dgvRegistData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegistData.Location = new System.Drawing.Point(72, 317);
+            this.dgvRegistData.Location = new System.Drawing.Point(80, 317);
             this.dgvRegistData.MultiSelect = false;
             this.dgvRegistData.Name = "dgvRegistData";
+            this.dgvRegistData.RowHeadersWidth = 51;
             this.dgvRegistData.RowTemplate.Height = 21;
             this.dgvRegistData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRegistData.Size = new System.Drawing.Size(817, 297);
@@ -254,9 +255,9 @@ namespace CarReportSystem1 {
             // pbPicture
             // 
             this.pbPicture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbPicture.Location = new System.Drawing.Point(502, 41);
+            this.pbPicture.Location = new System.Drawing.Point(508, 41);
             this.pbPicture.Name = "pbPicture";
-            this.pbPicture.Size = new System.Drawing.Size(383, 212);
+            this.pbPicture.Size = new System.Drawing.Size(377, 212);
             this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPicture.TabIndex = 6;
             this.pbPicture.TabStop = false;
@@ -277,7 +278,7 @@ namespace CarReportSystem1 {
             this.label7.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label7.Location = new System.Drawing.Point(2, 317);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 13);
+            this.label7.Size = new System.Drawing.Size(85, 17);
             this.label7.TabIndex = 0;
             this.label7.Text = "記事一覧：";
             // 
@@ -361,7 +362,7 @@ namespace CarReportSystem1 {
             // 
             // fmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(905, 635);
             this.Controls.Add(this.btPictureDelete);

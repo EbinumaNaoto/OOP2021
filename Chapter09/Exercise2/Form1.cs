@@ -14,7 +14,6 @@ namespace Exercise2 {
 
         string inputPath = ""; //変換元ファイル(読み込むファイル)
         string outputPath = ""; //変換先ファイル
-        string[] lines = null;
 
         public Form1() {
             InitializeComponent();
@@ -31,13 +30,17 @@ namespace Exercise2 {
         private void buttonChangeFile_Click(object sender, EventArgs e) {
             if (saveFileDialog.ShowDialog() == DialogResult.OK) {
                 outputPath = saveFileDialog.FileName;
-                File.WriteAllLines(outputPath,lines);
             }
         }
 
         //行番号を追加する処理
         private void buttonChange_Click(object sender, EventArgs e) {
-            lines = File.ReadLines(inputPath, Encoding.UTF8).Select((s, index) => string.Format($"{index + 1}: {s}")).ToArray();
+            var lines = File.ReadLines(inputPath, Encoding.UTF8).Select((s, index) => string.Format($"{index + 1}: {s}")).ToArray();
+            using (var writer = new StreamWriter(outputPath, false)) {
+                foreach (var line in lines) {
+                    writer.Write(line);
+                }
+            }
         }
 
         //テキストファイルの挿入する処理
