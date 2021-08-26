@@ -78,7 +78,7 @@ namespace Sample0823
             this.Exec.Font = new System.Drawing.Font("MS UI Gothic", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Exec.Location = new System.Drawing.Point(622, 14);
             this.Exec.Name = "Exec";
-            this.Exec.Size = new System.Drawing.Size(127, 51);
+            this.Exec.Size = new System.Drawing.Size(148, 81);
             this.Exec.TabIndex = 2;
             this.Exec.Text = "結果";
             this.Exec.UseVisualStyleBackColor = true;

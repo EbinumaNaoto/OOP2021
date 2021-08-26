@@ -15,11 +15,13 @@ namespace Sample0823 {
         }
 
         private void Exec_Click(object sender, EventArgs e) {
+            /*
             int ans = 1;
             for (int i = 0; i < int.Parse(Jyou.Text); i++) {
                 ans *= int.Parse(Value.Text);
             }
             Result.Text = ans.ToString();
+            */
 
             Result.Text = Math.Pow(double.Parse(Value.Text), double.Parse(Jyou.Text)).ToString();
         }
