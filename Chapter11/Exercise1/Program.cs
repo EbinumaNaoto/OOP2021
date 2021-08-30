@@ -25,6 +25,9 @@ namespace Exercise1 {
             Exercise1_3(file);
             Console.WriteLine("-------");
 
+            //11.1.4
+            Exercise1_4(file);
+            Console.WriteLine("-------");
         }
 
         private static void Exercise1_1(string file) {
@@ -61,6 +64,21 @@ namespace Exercise1 {
                                        }).OrderByDescending(x => int.Parse(x.Teammembers))
                                        .First();
             Console.WriteLine($"最大人数競技名:{xballsport.Name} {xballsport.Teammembers}人");
+        }
+
+        private static void Exercise1_4(string file) {
+
+            var newfile = "sports.xml"; //出力する新しいファイル
+
+            //P290 リスト11.15を参考にする
+            var element = new XElement("ballsport",
+                                        new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
+                                        new XElement("teammembers", "11"),
+                                        new XElement("firstplayed", "1867"));
+
+            var xdoc = XDocument.Load(file);
+            xdoc.Root.Add(element);
+            xdoc.Save(newfile);
         }
     }
 }
