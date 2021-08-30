@@ -53,7 +53,14 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_3(string file) {
-            
+            var xdoc = XDocument.Load(file);
+            var xballsport = xdoc.Root.Elements()
+                                       .Select(x => new {
+                                           Teammembers = x.Element("teammembers").Value,
+                                           Name = x.Element("name").Value,
+                                       }).OrderByDescending(x => int.Parse(x.Teammembers))
+                                       .First();
+            Console.WriteLine($"最大人数競技名:{xballsport.Name} {xballsport.Teammembers}人");
         }
     }
 }
