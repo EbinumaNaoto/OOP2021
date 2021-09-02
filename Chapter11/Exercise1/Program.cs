@@ -71,13 +71,14 @@ namespace Exercise1 {
             var newfile = "sports.xml"; //出力する新しいファイル
 
             //P290 リスト11.15を参考にする
+            //追加するデータ
             var element = new XElement("ballsport",
                                         new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
                                         new XElement("teammembers", "11"),
                                         new XElement("firstplayed", "1867"));
 
-            var xdoc = XDocument.Load(file);
-            xdoc.Root.Add(element);
+            var xdoc = XDocument.Load(file); //追加先のXMLファイルの読み込み
+            xdoc.Root.Add(element); //保存先へ追加
             xdoc.Save(newfile);
         }
     }
