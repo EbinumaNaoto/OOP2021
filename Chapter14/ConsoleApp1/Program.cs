@@ -20,10 +20,8 @@ namespace Section04 {
 
         //コンストラクタ
         public Program() {
-            //DownloadString();
-            //DownloadFileAsync();
-            //OpenReadSample();
-            var results = GetWeatherReportFromYahoo(4210);
+            WeatherMessage();
+            var results = GetWeatherReportFromYahoo(CityNumberToCityCode(int.Parse(Console.ReadLine())));
             foreach (var s in results) {
                 Console.WriteLine(s);
             }
@@ -86,9 +84,39 @@ namespace Section04 {
                 var nodes = xdoc.Root.Descendants("title");
                 foreach (var node in nodes) {
                     string s = Regex.Replace(node.Value, "【|】|- Yahoo!天気・災害", "");
-                    yield return s;
+                    yield return s; //一件ずつデータを渡すことが出来る
                 }
             }
+        }
+
+        private static void WeatherMessage() {
+            Console.WriteLine("yahoo！週間天気予報");
+            Console.WriteLine();
+            Console.WriteLine("地域コード入力");
+            Console.WriteLine("1:前橋");
+            Console.WriteLine("2:みなかみ");
+            Console.WriteLine("3:宇都宮");
+            Console.WriteLine("4:水戸");
+            Console.WriteLine("9:その他(直接入力)");
+            Console.WriteLine();
+        }
+
+        private static int CityNumberToCityCode(int cityNumber) {
+            switch (cityNumber) {
+                case 1:
+                    return 4210;
+                case 2:
+                    return 4220;
+                case 3:
+                    return 4110;
+                case 4:
+                    return 4010;
+                case 9:
+                    Console.WriteLine("コードを入力してください。");
+                    return int.Parse(Console.ReadLine());
+            }
+            return -1;
+
         }
     }
 }
