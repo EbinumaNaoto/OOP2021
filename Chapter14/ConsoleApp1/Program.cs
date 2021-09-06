@@ -12,6 +12,17 @@ namespace Section04 {
 
     class Program {
 
+        Dictionary<string, int> AreaDic = new Dictionary<string, int>()
+        {
+            {"前橋",4210 },
+            {"みなかみ",4220 },
+            {"宇都宮",4110 },
+            {"水戸",4010 },
+            {"さいたま",4310 },
+        };
+
+        List<int> cityCode = new List<int>();
+
         static void Main(string[] args) {
 
             new Program();
@@ -21,7 +32,18 @@ namespace Section04 {
         //コンストラクタ
         public Program() {
             WeatherMessage();
-            var results = GetWeatherReportFromYahoo(CityNumberToCityCode(int.Parse(Console.ReadLine())));
+            //文字列として入力した数字を取り込む
+            var selectArea = Console.ReadLine();
+            var pos = int.Parse(selectArea);
+            int code;
+            if (pos != 9) {
+                code = cityCode[pos - 1];
+            } else {
+                //その他の処理
+                Console.Write("都市コードを入力:");
+                code = int.Parse(Console.ReadLine());
+            }
+            var results = GetWeatherReportFromYahoo(code);
             foreach (var s in results) {
                 Console.WriteLine(s);
             }
@@ -89,34 +111,21 @@ namespace Section04 {
             }
         }
 
-        private static void WeatherMessage() {
+        private void WeatherMessage() {
             Console.WriteLine("yahoo！週間天気予報");
             Console.WriteLine();
             Console.WriteLine("地域コード入力");
-            Console.WriteLine("1:前橋");
-            Console.WriteLine("2:みなかみ");
-            Console.WriteLine("3:宇都宮");
-            Console.WriteLine("4:水戸");
+
+            int num = 1;
+            foreach (KeyValuePair<string, int> pair in AreaDic) {
+                Console.WriteLine("{0}:{1}",num++, pair.Key);
+                cityCode.Add(pair.Value); //コードをリストへ保存
+            }
             Console.WriteLine("9:その他(直接入力)");
             Console.WriteLine();
-        }
 
-        private static int CityNumberToCityCode(int cityNumber) {
-            switch (cityNumber) {
-                case 1:
-                    return 4210;
-                case 2:
-                    return 4220;
-                case 3:
-                    return 4110;
-                case 4:
-                    return 4010;
-                case 9:
-                    Console.WriteLine("コードを入力してください。");
-                    return int.Parse(Console.ReadLine());
-            }
-            return -1;
-
+            Console.Write(">");
+            
         }
     }
 }
