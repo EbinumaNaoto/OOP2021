@@ -18,7 +18,7 @@ namespace RssReader {
         }
 
         private void btRead_Click(object sender, EventArgs e) {
-
+            lbTitles.Items.Clear();
             setRssTitle(tbUrl.Text);
 
         }
@@ -27,17 +27,19 @@ namespace RssReader {
         private void setRssTitle(string urlText) {
             using (var wc = new WebClient()) {
                 wc.Headers.Add("Content-type", "charset=UTF-8");
-                var uriString = string.Format(@"{0}",urlText);
-                var url = new Uri(uriString);
-                var stream = wc.OpenRead(url);
+                var stream = wc.OpenRead(urlText);
 
                 XDocument xdoc = XDocument.Load(stream);
                 var nodes = xdoc.Root.Descendants("title");
                 foreach (var node in nodes) {
-                    string s = Regex.Replace(node.Value,"<title>", "");
-                    lbTitles.Items.Add(s);
+                    lbTitles.Items.Add(node);
                 }
             }
+        }
+
+        //クリックされたタイトルのlinkをウェブブラウザのurlに取り込む
+        private void lbTitles_SelectedIndexChanged(object sender, EventArgs e) {
+            
         }
     }
 }
