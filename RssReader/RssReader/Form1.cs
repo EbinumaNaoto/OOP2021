@@ -13,6 +13,9 @@ using System.Xml.Linq;
 
 namespace RssReader {
     public partial class Form1 : Form {
+
+        List<XElement> xitem = new List<XElement>();
+
         public Form1() {
             InitializeComponent();
         }
@@ -33,21 +36,21 @@ namespace RssReader {
                 var nodes = xdoc.Root.Descendants("title");
                 foreach (var node in nodes) {
                     
-                    lbTitles.Items.Add(node);
+                    lbTitles.Items.Add(node.Value);
+                    xitem.Add(node.Parent);
                 }
             }
         }
 
         //クリックされたタイトルのlinkをウェブブラウザのurlに取り込む
         private void lbTitles_SelectedIndexChanged(object sender, EventArgs e) {
-            var titleItem = (XElement)lbTitles.SelectedItem;
-            var link = Regex.Replace(titleItem.NextNode.ToString(), "<link>|</link>", "");
+            var item = xitem[lbTitles.SelectedIndex];
+            //var link = item.Element("link").Value;
 
-            wbBrowser.Navigate(link);
+            lbdescription.Text = item.Element("description").Value+"\r\n"+item.Element("pubDate").Value;
 
-            //クリックしたタイトルのdescriptionを表示
+            //wbBrowser.Navigate(link);
 
-            lbdescription.Text = titleItem.Parent.Element("description").Value;
         }
     }
 }
