@@ -44,6 +44,10 @@ namespace RssReader {
             var link = Regex.Replace(titleItem.NextNode.ToString(), "<link>|</link>", "");
 
             wbBrowser.Navigate(link);
+
+            //クリックしたタイトルのdescriptionを表示
+
+            lbdescription.Text = titleItem.Parent.Element("description").Value;
         }
     }
 }
