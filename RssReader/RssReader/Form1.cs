@@ -32,6 +32,7 @@ namespace RssReader {
                 XDocument xdoc = XDocument.Load(stream);
                 var nodes = xdoc.Root.Descendants("title");
                 foreach (var node in nodes) {
+                    
                     lbTitles.Items.Add(node);
                 }
             }
@@ -39,7 +40,10 @@ namespace RssReader {
 
         //クリックされたタイトルのlinkをウェブブラウザのurlに取り込む
         private void lbTitles_SelectedIndexChanged(object sender, EventArgs e) {
-            
+            var titleItem = (XElement)lbTitles.SelectedItem;
+            var link = Regex.Replace(titleItem.NextNode.ToString(), "<link>|</link>", "");
+
+            wbBrowser.Navigate(link);
         }
     }
 }
