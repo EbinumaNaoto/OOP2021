@@ -25,22 +25,48 @@ namespace RssReader {
         /// </summary>
         private void InitializeComponent() {
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
+            this.btback = new System.Windows.Forms.Button();
+            this.btAdvance = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // wbBrowser
             // 
-            this.wbBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wbBrowser.Location = new System.Drawing.Point(0, 0);
+            this.wbBrowser.Location = new System.Drawing.Point(0, 50);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
-            this.wbBrowser.Size = new System.Drawing.Size(1229, 853);
+            this.wbBrowser.ScriptErrorsSuppressed = true;
+            this.wbBrowser.Size = new System.Drawing.Size(1229, 803);
             this.wbBrowser.TabIndex = 0;
+            // 
+            // btback
+            // 
+            this.btback.Font = new System.Drawing.Font("MS UI Gothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btback.Location = new System.Drawing.Point(13, 3);
+            this.btback.Name = "btback";
+            this.btback.Size = new System.Drawing.Size(50, 41);
+            this.btback.TabIndex = 1;
+            this.btback.Text = "⇦";
+            this.btback.UseVisualStyleBackColor = true;
+            this.btback.Click += new System.EventHandler(this.btback_Click);
+            // 
+            // btAdvance
+            // 
+            this.btAdvance.Font = new System.Drawing.Font("MS UI Gothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btAdvance.Location = new System.Drawing.Point(69, 3);
+            this.btAdvance.Name = "btAdvance";
+            this.btAdvance.Size = new System.Drawing.Size(49, 41);
+            this.btAdvance.TabIndex = 1;
+            this.btAdvance.Text = "⇨";
+            this.btAdvance.UseVisualStyleBackColor = true;
+            this.btAdvance.Click += new System.EventHandler(this.btAdvance_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1229, 853);
+            this.Controls.Add(this.btAdvance);
+            this.Controls.Add(this.btback);
             this.Controls.Add(this.wbBrowser);
             this.Name = "Form2";
             this.Text = "32063のwebです。";
@@ -51,5 +77,7 @@ namespace RssReader {
         #endregion
 
         private System.Windows.Forms.WebBrowser wbBrowser;
+        private System.Windows.Forms.Button btback;
+        private System.Windows.Forms.Button btAdvance;
     }
 }

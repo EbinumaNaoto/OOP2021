@@ -14,8 +14,8 @@ using System.Xml.Linq;
 namespace RssReader {
     public partial class Form1 : Form{
 
-        List<XElement> xitem = new List<XElement>();
-
+        List<ItemData> items = null;
+        
         public Form1() {
             InitializeComponent();
         }
@@ -30,31 +30,33 @@ namespace RssReader {
         private void setRssTitle(string urlText) {
             using (var wc = new WebClient()) {
                 wc.Headers.Add("Content-type", "charset=UTF-8");
+                
                 var stream = wc.OpenRead(urlText);
 
                 XDocument xdoc = XDocument.Load(stream);
-                var nodes = xdoc.Root.Descendants("item");
-                foreach (var node in nodes) {
+
+                items = xdoc.Root.Descendants("item").Select(x => new ItemData {
+                    Title = x.Element("title").Value,
+                    Link = x.Element("link").Value,
+                    PubDate = (DateTime)x.Element("pubDate"),
+                    Description = x.Element("description").Value
+                }).ToList();
+
+                foreach (var item in items) {
                     
-                    lbTitles.Items.Add(node.Element("title").Value);
-                    xitem.Add(node);
+                    lbTitles.Items.Add(item.Title);
                 }
             }
         }
 
         //クリックされたタイトルのlinkをウェブブラウザのurlに取り込む
         private void lbTitles_SelectedIndexChanged(object sender, EventArgs e) {
-            var item = xitem[lbTitles.SelectedIndex];
-            
-
-            lbdescription.Text = item.Element("description").Value+"\r\n"+item.Element("pubDate").Value;
-
-            //wbBrowser.Navigate(link);
-
+            var item = items[lbTitles.SelectedIndex];
+            lbdescription.Text = item.Description+"\r\n"+item.PubDate;
         }
 
         private void btWebDisplay_Click(object sender, EventArgs e) {
-            var link = xitem[lbTitles.SelectedIndex].Element("link").Value;
+            var link = items[lbTitles.SelectedIndex].Link;
             var formWebbrowser = new Form2(link);
             formWebbrowser.Show();
         }
