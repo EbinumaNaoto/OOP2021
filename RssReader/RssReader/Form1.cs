@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace RssReader {
-    public partial class Form1 : Form {
+    public partial class Form1 : Form{
 
         List<XElement> xitem = new List<XElement>();
 
@@ -33,11 +33,11 @@ namespace RssReader {
                 var stream = wc.OpenRead(urlText);
 
                 XDocument xdoc = XDocument.Load(stream);
-                var nodes = xdoc.Root.Descendants("title");
+                var nodes = xdoc.Root.Descendants("item");
                 foreach (var node in nodes) {
                     
-                    lbTitles.Items.Add(node.Value);
-                    xitem.Add(node.Parent);
+                    lbTitles.Items.Add(node.Element("title").Value);
+                    xitem.Add(node);
                 }
             }
         }
@@ -45,12 +45,18 @@ namespace RssReader {
         //クリックされたタイトルのlinkをウェブブラウザのurlに取り込む
         private void lbTitles_SelectedIndexChanged(object sender, EventArgs e) {
             var item = xitem[lbTitles.SelectedIndex];
-            //var link = item.Element("link").Value;
+            
 
             lbdescription.Text = item.Element("description").Value+"\r\n"+item.Element("pubDate").Value;
 
             //wbBrowser.Navigate(link);
 
+        }
+
+        private void btWebDisplay_Click(object sender, EventArgs e) {
+            var link = xitem[lbTitles.SelectedIndex].Element("link").Value;
+            var formWebbrowser = new Form2(link);
+            formWebbrowser.Show();
         }
     }
 }
