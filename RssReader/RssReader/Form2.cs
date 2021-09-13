@@ -16,5 +16,19 @@ namespace RssReader {
         private void btAdvance_Click(object sender, EventArgs e) {
             wbBrowser.GoForward();
         }
+
+        private void wbBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
+            if (wbBrowser.CanGoBack == true) {
+                btback.Enabled = true;
+            } else {
+                btback.Enabled = false;
+            }
+
+            if (wbBrowser.CanGoForward == true) {
+                btAdvance.Enabled = true;
+            } else {
+                btAdvance.Enabled = false;
+            }
+        }
     }
 }

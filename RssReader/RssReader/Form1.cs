@@ -52,7 +52,7 @@ namespace RssReader {
         //クリックされたタイトルのlinkをウェブブラウザのurlに取り込む
         private void lbTitles_SelectedIndexChanged(object sender, EventArgs e) {
             var item = items[lbTitles.SelectedIndex];
-            lbdescription.Text = item.Description+"\r\n"+item.PubDate;
+            lbdescription.Text = "概要:"+item.Description+"\r\n更新時間:"+item.PubDate.ToString("F");
         }
 
         private void btWebDisplay_Click(object sender, EventArgs e) {
