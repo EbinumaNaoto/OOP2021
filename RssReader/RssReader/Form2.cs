@@ -30,5 +30,13 @@ namespace RssReader {
                 btAdvance.Enabled = false;
             }
         }
+
+        private void btUpdate_Click(object sender, EventArgs e) {
+            wbBrowser.Refresh();
+        }
+
+        private void btHome_Click(object sender, EventArgs e) {
+            wbBrowser.Url = new System.Uri("https://www.yahoo.co.jp/");
+        }
     }
 }

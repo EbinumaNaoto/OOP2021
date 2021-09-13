@@ -27,6 +27,8 @@ namespace RssReader {
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
             this.btback = new System.Windows.Forms.Button();
             this.btAdvance = new System.Windows.Forms.Button();
+            this.btUpdate = new System.Windows.Forms.Button();
+            this.btHome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // wbBrowser
@@ -61,11 +63,35 @@ namespace RssReader {
             this.btAdvance.UseVisualStyleBackColor = true;
             this.btAdvance.Click += new System.EventHandler(this.btAdvance_Click);
             // 
+            // btUpdate
+            // 
+            this.btUpdate.Font = new System.Drawing.Font("MS UI Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btUpdate.Location = new System.Drawing.Point(125, 3);
+            this.btUpdate.Name = "btUpdate";
+            this.btUpdate.Size = new System.Drawing.Size(52, 41);
+            this.btUpdate.TabIndex = 2;
+            this.btUpdate.Text = "↻";
+            this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
+            // 
+            // btHome
+            // 
+            this.btHome.Font = new System.Drawing.Font("MS UI Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btHome.Location = new System.Drawing.Point(184, 3);
+            this.btHome.Name = "btHome";
+            this.btHome.Size = new System.Drawing.Size(53, 41);
+            this.btHome.TabIndex = 3;
+            this.btHome.Text = "🏠";
+            this.btHome.UseVisualStyleBackColor = true;
+            this.btHome.Click += new System.EventHandler(this.btHome_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1229, 853);
+            this.Controls.Add(this.btHome);
+            this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.btAdvance);
             this.Controls.Add(this.btback);
             this.Controls.Add(this.wbBrowser);
@@ -80,5 +106,7 @@ namespace RssReader {
         private System.Windows.Forms.WebBrowser wbBrowser;
         private System.Windows.Forms.Button btback;
         private System.Windows.Forms.Button btAdvance;
+        private System.Windows.Forms.Button btUpdate;
+        private System.Windows.Forms.Button btHome;
     }
 }

@@ -15,7 +15,7 @@ namespace RssReader {
     public partial class Form1 : Form{
 
         List<ItemData> items = null;
-        
+
         public Form1() {
             InitializeComponent();
         }
@@ -28,24 +28,28 @@ namespace RssReader {
 
         //指定したURL先からXMLデータを取得しtitleを取得し、リストボックスへセットする
         private void setRssTitle(string urlText) {
-            using (var wc = new WebClient()) {
-                wc.Headers.Add("Content-type", "charset=UTF-8");
-                
-                var stream = wc.OpenRead(urlText);
+            try {
+                using (var wc = new WebClient()) {
+                    wc.Headers.Add("Content-type", "charset=UTF-8");
 
-                XDocument xdoc = XDocument.Load(stream);
+                    var stream = wc.OpenRead(urlText);
 
-                items = xdoc.Root.Descendants("item").Select(x => new ItemData {
-                    Title = x.Element("title").Value,
-                    Link = x.Element("link").Value,
-                    PubDate = (DateTime)x.Element("pubDate"),
-                    Description = x.Element("description").Value
-                }).ToList();
+                    XDocument xdoc = XDocument.Load(stream);
 
-                foreach (var item in items) {
-                    
-                    lbTitles.Items.Add(item.Title);
+                    items = xdoc.Root.Descendants("item").Select(x => new ItemData {
+                        Title = x.Element("title").Value,
+                        Link = x.Element("link").Value,
+                        PubDate = (DateTime)x.Element("pubDate"),
+                        Description = x.Element("description").Value
+                    }).ToList();
+
+                    foreach (var item in items) {
+
+                        lbTitles.Items.Add(item.Title);
+                    }
                 }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -60,5 +64,6 @@ namespace RssReader {
             var formWebbrowser = new Form2(link);
             formWebbrowser.Show();
         }
+
     }
 }

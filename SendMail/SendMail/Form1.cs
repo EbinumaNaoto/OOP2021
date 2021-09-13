@@ -47,7 +47,7 @@ namespace SendMail {
 
                 MessageBox.Show(ex.Message);
 
-            }*/
+            }
         }
     }
 }
