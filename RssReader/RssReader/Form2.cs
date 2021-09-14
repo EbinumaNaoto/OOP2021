@@ -17,12 +17,13 @@ namespace RssReader {
             wbBrowser.GoForward();
         }
 
+        //ページの読み込みが完了すると呼ばれるイベントハンドラ
         private void wbBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
             //前のページに履歴がある場合、戻るボタンを有効にする
-            btback.Enabled = (wbBrowser.CanGoBack == true) ? true : false;
+            btback.Enabled = wbBrowser.CanGoBack;
 
             //次のページに履歴がある場合、進むボタンを有効にする
-            btAdvance.Enabled = (wbBrowser.CanGoForward == true) ? true : false;
+            btAdvance.Enabled = wbBrowser.CanGoForward;
             
         }
 
