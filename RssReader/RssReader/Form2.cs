@@ -18,17 +18,12 @@ namespace RssReader {
         }
 
         private void wbBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
-            if (wbBrowser.CanGoBack == true) {
-                btback.Enabled = true;
-            } else {
-                btback.Enabled = false;
-            }
+            //前のページに履歴がある場合、戻るボタンを有効にする
+            btback.Enabled = (wbBrowser.CanGoBack == true) ? true : false;
 
-            if (wbBrowser.CanGoForward == true) {
-                btAdvance.Enabled = true;
-            } else {
-                btAdvance.Enabled = false;
-            }
+            //次のページに履歴がある場合、進むボタンを有効にする
+            btAdvance.Enabled = (wbBrowser.CanGoForward == true) ? true : false;
+            
         }
 
         private void btUpdate_Click(object sender, EventArgs e) {
