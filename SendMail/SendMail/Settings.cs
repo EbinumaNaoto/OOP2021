@@ -8,11 +8,24 @@ namespace SendMail {
 
     public class Settings {
 
+        private static Settings instance = null;
+
         public int Port { set; get; }   //ポート番号
         public string Host { set; get; }    //ホスト名
         public string MailAddr { set; get; }    //メールアドレス
         public string Pass { set; get; }    //パスワード
         public bool SSL { set; get; }   //SSL
+
+        //コンストラクタを秘匿にする
+        private Settings() {}
+        
+        //インスタンスを取得する
+        public static Settings getInstance() {
+            if (instance == null) {
+                instance = new Settings();
+            }
+            return instance;
+        }
 
         //初期値
         public string sHost() {
@@ -28,7 +41,7 @@ namespace SendMail {
         }
 
         public string sPass() {
-            return "OjsInfosys2019";
+            return "Infosys2021";
         }
 
     }

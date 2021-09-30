@@ -25,15 +25,15 @@ namespace SendMail {
         /// </summary>
         private void InitializeComponent() {
             this.gbServerInfo = new System.Windows.Forms.GroupBox();
-            this.lbHost = new System.Windows.Forms.Label();
-            this.tbHost = new System.Windows.Forms.TextBox();
-            this.lbPort = new System.Windows.Forms.Label();
-            this.tbPort = new System.Windows.Forms.TextBox();
-            this.lbPass = new System.Windows.Forms.Label();
-            this.tbPass = new System.Windows.Forms.TextBox();
-            this.lbUserName = new System.Windows.Forms.Label();
-            this.tbUserName = new System.Windows.Forms.TextBox();
             this.cbSSL = new System.Windows.Forms.CheckBox();
+            this.tbUserName = new System.Windows.Forms.TextBox();
+            this.tbPass = new System.Windows.Forms.TextBox();
+            this.tbPort = new System.Windows.Forms.TextBox();
+            this.tbHost = new System.Windows.Forms.TextBox();
+            this.lbUserName = new System.Windows.Forms.Label();
+            this.lbPass = new System.Windows.Forms.Label();
+            this.lbPort = new System.Windows.Forms.Label();
+            this.lbHost = new System.Windows.Forms.Label();
             this.gbUserInfo = new System.Windows.Forms.GroupBox();
             this.lbSender = new System.Windows.Forms.Label();
             this.tbSender = new System.Windows.Forms.TextBox();
@@ -63,30 +63,30 @@ namespace SendMail {
             this.gbServerInfo.TabStop = false;
             this.gbServerInfo.Text = "サーバー情報";
             // 
-            // lbHost
+            // cbSSL
             // 
-            this.lbHost.AutoSize = true;
-            this.lbHost.Location = new System.Drawing.Point(1, 19);
-            this.lbHost.Name = "lbHost";
-            this.lbHost.Size = new System.Drawing.Size(69, 12);
-            this.lbHost.TabIndex = 0;
-            this.lbHost.Text = "送信サーバー";
+            this.cbSSL.AutoSize = true;
+            this.cbSSL.Location = new System.Drawing.Point(406, 81);
+            this.cbSSL.Name = "cbSSL";
+            this.cbSSL.Size = new System.Drawing.Size(68, 16);
+            this.cbSSL.TabIndex = 2;
+            this.cbSSL.Text = "SSL有効";
+            this.cbSSL.UseVisualStyleBackColor = true;
             // 
-            // tbHost
+            // tbUserName
             // 
-            this.tbHost.Location = new System.Drawing.Point(76, 16);
-            this.tbHost.Name = "tbHost";
-            this.tbHost.Size = new System.Drawing.Size(206, 19);
-            this.tbHost.TabIndex = 1;
+            this.tbUserName.Location = new System.Drawing.Point(76, 44);
+            this.tbUserName.Name = "tbUserName";
+            this.tbUserName.Size = new System.Drawing.Size(206, 19);
+            this.tbUserName.TabIndex = 1;
             // 
-            // lbPort
+            // tbPass
             // 
-            this.lbPort.AutoSize = true;
-            this.lbPort.Location = new System.Drawing.Point(297, 19);
-            this.lbPort.Name = "lbPort";
-            this.lbPort.Size = new System.Drawing.Size(33, 12);
-            this.lbPort.TabIndex = 0;
-            this.lbPort.Text = "ポート";
+            this.tbPass.Location = new System.Drawing.Point(352, 44);
+            this.tbPass.Name = "tbPass";
+            this.tbPass.PasswordChar = '*';
+            this.tbPass.Size = new System.Drawing.Size(206, 19);
+            this.tbPass.TabIndex = 1;
             // 
             // tbPort
             // 
@@ -95,21 +95,12 @@ namespace SendMail {
             this.tbPort.Size = new System.Drawing.Size(206, 19);
             this.tbPort.TabIndex = 1;
             // 
-            // lbPass
+            // tbHost
             // 
-            this.lbPass.AutoSize = true;
-            this.lbPass.Location = new System.Drawing.Point(297, 47);
-            this.lbPass.Name = "lbPass";
-            this.lbPass.Size = new System.Drawing.Size(52, 12);
-            this.lbPass.TabIndex = 0;
-            this.lbPass.Text = "パスワード";
-            // 
-            // tbPass
-            // 
-            this.tbPass.Location = new System.Drawing.Point(352, 44);
-            this.tbPass.Name = "tbPass";
-            this.tbPass.Size = new System.Drawing.Size(206, 19);
-            this.tbPass.TabIndex = 1;
+            this.tbHost.Location = new System.Drawing.Point(76, 16);
+            this.tbHost.Name = "tbHost";
+            this.tbHost.Size = new System.Drawing.Size(206, 19);
+            this.tbHost.TabIndex = 1;
             // 
             // lbUserName
             // 
@@ -120,22 +111,32 @@ namespace SendMail {
             this.lbUserName.TabIndex = 0;
             this.lbUserName.Text = "ユーザー名";
             // 
-            // tbUserName
+            // lbPass
             // 
-            this.tbUserName.Location = new System.Drawing.Point(76, 44);
-            this.tbUserName.Name = "tbUserName";
-            this.tbUserName.Size = new System.Drawing.Size(206, 19);
-            this.tbUserName.TabIndex = 1;
+            this.lbPass.AutoSize = true;
+            this.lbPass.Location = new System.Drawing.Point(297, 47);
+            this.lbPass.Name = "lbPass";
+            this.lbPass.Size = new System.Drawing.Size(52, 12);
+            this.lbPass.TabIndex = 0;
+            this.lbPass.Text = "パスワード";
             // 
-            // cbSSL
+            // lbPort
             // 
-            this.cbSSL.AutoSize = true;
-            this.cbSSL.Location = new System.Drawing.Point(406, 81);
-            this.cbSSL.Name = "cbSSL";
-            this.cbSSL.Size = new System.Drawing.Size(68, 16);
-            this.cbSSL.TabIndex = 2;
-            this.cbSSL.Text = "SSL有効";
-            this.cbSSL.UseVisualStyleBackColor = true;
+            this.lbPort.AutoSize = true;
+            this.lbPort.Location = new System.Drawing.Point(297, 19);
+            this.lbPort.Name = "lbPort";
+            this.lbPort.Size = new System.Drawing.Size(33, 12);
+            this.lbPort.TabIndex = 0;
+            this.lbPort.Text = "ポート";
+            // 
+            // lbHost
+            // 
+            this.lbHost.AutoSize = true;
+            this.lbHost.Location = new System.Drawing.Point(1, 19);
+            this.lbHost.Name = "lbHost";
+            this.lbHost.Size = new System.Drawing.Size(69, 12);
+            this.lbHost.TabIndex = 0;
+            this.lbHost.Text = "送信サーバー";
             // 
             // gbUserInfo
             // 
