@@ -8,6 +8,7 @@ namespace SendMail {
 
     public class Settings {
 
+        //singleton
         private static Settings instance = null;
 
         public int Port { set; get; }   //ポート番号

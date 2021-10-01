@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace SendMail {
     public partial class Form1 : Form {
@@ -18,6 +19,9 @@ namespace SendMail {
 
         //設定情報
         private Settings settings = Settings.getInstance();
+
+        //トークン
+        private string tokun = null;
 
         public Form1() {
             InitializeComponent();
@@ -32,9 +36,13 @@ namespace SendMail {
                 //宛先(To)
                 mailMessage.To.Add(tbTo.Text);
                 //宛先(Cc)
-                //mailMessage.CC.Add(tbCc?.Text);
+                if (!string.IsNullOrEmpty(tbCc.Text)) {
+                    mailMessage.CC.Add(tbCc.Text);
+                }
                 //宛先(Bcc)
-                //mailMessage.Bcc.Add(tbBcc?.Text);
+                if (!string.IsNullOrEmpty(tbBcc.Text)) {
+                    mailMessage.Bcc.Add(tbBcc.Text);
+                }
                 //件名(タイトル)
                 mailMessage.Subject = tbTitle.Text;
                 //本文
@@ -47,9 +55,11 @@ namespace SendMail {
                 smtpClient.Host = settings.Host;
                 smtpClient.Port = settings.Port;
                 smtpClient.EnableSsl = settings.SSL;
-                smtpClient.Send(mailMessage);
-
-                MessageBox.Show("送信完了");
+                //smtpClient.Send(mailMessage);
+                
+                //送信完了時に呼ばれるイベントハンドラの登録
+                smtpClient.SendCompleted += SmtpClient_SendCompleted;
+                smtpClient.SendAsync(mailMessage,tokun);
 
             } catch (Exception ex) {
 
@@ -58,8 +68,37 @@ namespace SendMail {
             }
         }
 
+        //送信が完了すると呼ばれるコールバックメソッド
+        private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e) {
+            tokun = (string) e.UserState;
+            if (e.Error != null) {
+                MessageBox.Show(e.Error.Message);
+            } else {
+                MessageBox.Show("送信完了");
+            }            
+        }
+
         private void btConfig_Click(object sender, EventArgs e) {
             configForm.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+            //xmlファイルを読み込む
+            xmlReader();
+        }
+
+        private void xmlReader() {
+            try {
+                //読込成功
+                var xdoc = XDocument.Load("");
+
+
+            } catch (Exception ex) {
+                //読込失敗
+                MessageBox.Show(ex.Message);
+                //設定画面表示
+                configForm.Show();
+            }
         }
     }
 }

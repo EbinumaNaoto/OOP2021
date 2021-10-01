@@ -43,6 +43,11 @@ namespace SendMail {
             this.Close();
         }
 
+        //xmlファイルに保存
+        private void btKeep_Click(object sender, EventArgs e) {
+            
+        }
+
         private void SettingRegist() {
             settings.Host = tbHost.Text;
             settings.Port = int.Parse(tbPort.Text);
