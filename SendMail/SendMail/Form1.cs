@@ -31,6 +31,7 @@ namespace SendMail {
             InitializeComponent();
         }
 
+        //送信ボタン
         private void btSend_Click(object sender, EventArgs e) {
             try {
                 //メール送信のためのインスタンスを生成

@@ -27,6 +27,12 @@ namespace SendMail {
         public static Settings getInstance() {
             if (instance == null) {
                 instance = new Settings();
+                //xmlファイルからsettingsを逆シリアル化
+                using (var reader = XmlReader.Create("mailConfigFile.xml")) {
+                    var serializer = new DataContractSerializer(typeof(Settings));
+                    var set = serializer.ReadObject(reader) as Settings;
+                    instance = set;
+                }
             }
             return instance;
         }
@@ -50,7 +56,6 @@ namespace SendMail {
 
         public void serialize() {
 
-
             //シリアル化するための設定値
             var set = new XmlWriterSettings {
                 Encoding = new UTF8Encoding(false),
@@ -65,14 +70,5 @@ namespace SendMail {
             }
 
         }
-        /*
-        public void reSerialize() {
-            //xmlファイルからsettingsを逆シリアル化
-            using (var reader = XmlReader.Create(xmlFileTitle)) {
-                var serializer = new DataContractSerializer(typeof(Settings));
-                this = serializer.ReadObject(reader) as Settings;
-            }
-        }
-        */
     }
 }

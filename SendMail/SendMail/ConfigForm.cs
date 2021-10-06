@@ -55,8 +55,6 @@ namespace SendMail {
             settings.MailAddr = tbUserName.Text;
             settings.Pass = tbPass.Text;
             settings.SSL = cbSSL.Checked;
-
-            settings.serialize();
         }
     }
 }
