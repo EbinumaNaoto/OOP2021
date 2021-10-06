@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SendMail {
     public partial class ConfigForm : Form {
@@ -35,6 +38,7 @@ namespace SendMail {
         //OK設定
         private void btOK_Click(object sender, EventArgs e) {
             SettingRegist();
+
             this.Close();
         }
 
@@ -43,17 +47,16 @@ namespace SendMail {
             this.Close();
         }
 
-        //xmlファイルに保存
-        private void btKeep_Click(object sender, EventArgs e) {
-            
-        }
-
+        //送信データ登録
         private void SettingRegist() {
+
             settings.Host = tbHost.Text;
             settings.Port = int.Parse(tbPort.Text);
             settings.MailAddr = tbUserName.Text;
             settings.Pass = tbPass.Text;
             settings.SSL = cbSSL.Checked;
+
+            settings.serialize();
         }
     }
 }

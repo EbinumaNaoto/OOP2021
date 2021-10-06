@@ -41,7 +41,6 @@ namespace SendMail {
             this.btCancel = new System.Windows.Forms.Button();
             this.btDefault = new System.Windows.Forms.Button();
             this.btOK = new System.Windows.Forms.Button();
-            this.btKeep = new System.Windows.Forms.Button();
             this.gbServerInfo.SuspendLayout();
             this.gbUserInfo.SuspendLayout();
             this.SuspendLayout();
@@ -206,22 +205,11 @@ namespace SendMail {
             this.btOK.UseVisualStyleBackColor = true;
             this.btOK.Click += new System.EventHandler(this.btOK_Click);
             // 
-            // btKeep
-            // 
-            this.btKeep.Location = new System.Drawing.Point(262, 220);
-            this.btKeep.Name = "btKeep";
-            this.btKeep.Size = new System.Drawing.Size(75, 23);
-            this.btKeep.TabIndex = 2;
-            this.btKeep.Text = "保存";
-            this.btKeep.UseVisualStyleBackColor = true;
-            this.btKeep.Click += new System.EventHandler(this.btKeep_Click);
-            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 253);
-            this.Controls.Add(this.btKeep);
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.btDefault);
             this.Controls.Add(this.btCancel);
@@ -257,6 +245,5 @@ namespace SendMail {
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btDefault;
         private System.Windows.Forms.Button btOK;
-        private System.Windows.Forms.Button btKeep;
     }
 }

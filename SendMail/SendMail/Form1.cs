@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace SendMail {
@@ -56,10 +60,10 @@ namespace SendMail {
                 smtpClient.Port = settings.Port;
                 smtpClient.EnableSsl = settings.SSL;
                 //smtpClient.Send(mailMessage);
-                
+
                 //送信完了時に呼ばれるイベントハンドラの登録
                 smtpClient.SendCompleted += SmtpClient_SendCompleted;
-                smtpClient.SendAsync(mailMessage,tokun);
+                smtpClient.SendAsync(mailMessage, tokun);
 
             } catch (Exception ex) {
 
@@ -70,12 +74,12 @@ namespace SendMail {
 
         //送信が完了すると呼ばれるコールバックメソッド
         private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e) {
-            tokun = (string) e.UserState;
+            tokun = (string)e.UserState;
             if (e.Error != null) {
                 MessageBox.Show(e.Error.Message);
             } else {
                 MessageBox.Show("送信完了");
-            }            
+            }
         }
 
         private void btConfig_Click(object sender, EventArgs e) {
@@ -83,19 +87,12 @@ namespace SendMail {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            //xmlファイルを読み込む
-            xmlReader();
-        }
 
-        private void xmlReader() {
-            try {
-                //読込成功
-                var xdoc = XDocument.Load("");
+            //ファイルが存在する場合
+            if (File.Exists(settings.xmlFileTitle)) {
+                settings.reSerialize();
+            } else {    //ファイルが存在しない場合
 
-
-            } catch (Exception ex) {
-                //読込失敗
-                MessageBox.Show(ex.Message);
                 //設定画面表示
                 configForm.Show();
             }
