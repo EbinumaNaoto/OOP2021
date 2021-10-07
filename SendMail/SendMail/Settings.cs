@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -18,7 +19,9 @@ namespace SendMail {
         public string MailAddr { set; get; }    //メールアドレス
         public string Pass { set; get; }    //パスワード
         public bool SSL { set; get; }   //SSL
-        public string xmlFileTitle { get { return "mailConfigFile.xml"; } }
+
+        public bool ConfigurationData { set; get; } = false; //データが設定されているかどうか
+        private string xmlFileTitle { get { return "mailConfigFile.xml"; } }
 
         //コンストラクタを秘匿にする
         private Settings() {}
@@ -27,11 +30,24 @@ namespace SendMail {
         public static Settings getInstance() {
             if (instance == null) {
                 instance = new Settings();
-                //xmlファイルからsettingsを逆シリアル化
-                using (var reader = XmlReader.Create("mailConfigFile.xml")) {
-                    var serializer = new DataContractSerializer(typeof(Settings));
-                    var set = serializer.ReadObject(reader) as Settings;
-                    instance = set;
+
+                //逆シリアル化
+                if (File.Exists("mailConfigFile.xml")) {
+                    //xmlファイルからsettingsを逆シリアル化
+                    using (var reader = XmlReader.Create("mailConfigFile.xml")) {
+                        var serializer = new DataContractSerializer(typeof(Settings));
+                        var set = serializer.ReadObject(reader) as Settings;
+
+                        //ディープコピー
+                        instance.Host = set.Host;
+                        instance.Port = set.Port;
+                        instance.MailAddr = set.MailAddr;
+                        instance.Pass = set.Pass;
+                        instance.SSL = set.SSL;
+
+                        //内容が設定されたことを記録する
+                        instance.ConfigurationData = true;
+                    }
                 }
             }
             return instance;
@@ -54,6 +70,7 @@ namespace SendMail {
             return "Infosys2021";
         }
 
+        //シリアル化
         public void serialize() {
 
             //シリアル化するための設定値
@@ -68,7 +85,6 @@ namespace SendMail {
                 var serializer = new DataContractSerializer(GetType());
                 serializer.WriteObject(writer, this);
             }
-
         }
     }
 }

@@ -55,6 +55,19 @@ namespace SendMail {
             settings.MailAddr = tbUserName.Text;
             settings.Pass = tbPass.Text;
             settings.SSL = cbSSL.Checked;
+
+            //送信データが入力されたことを記録する。
+            settings.ConfigurationData = true;
+
+            settings.serialize();
+        }
+
+        private void ConfigForm_Load(object sender, EventArgs e) {
+            tbHost.Text = settings.Host;
+            tbPort.Text = settings.Port.ToString();
+            tbUserName.Text = tbSender.Text = settings.MailAddr;
+            tbPass.Text = settings.Pass;
+            cbSSL.Checked = settings.SSL;
         }
     }
 }

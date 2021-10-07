@@ -34,6 +34,7 @@ namespace SendMail {
         //送信ボタン
         private void btSend_Click(object sender, EventArgs e) {
             try {
+                ConfigFormDisplay();
                 //メール送信のためのインスタンスを生成
                 var mailMessage = new MailMessage();
                 //差出人アドレス
@@ -83,20 +84,20 @@ namespace SendMail {
             }
         }
 
-        private void btConfig_Click(object sender, EventArgs e) {
-            configForm.ShowDialog();
+        private void Form1_Load(object sender, EventArgs e) {
+            ConfigFormDisplay();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
-
-            //ファイルが存在する場合
-            if (File.Exists(settings.xmlFileTitle)) {
-                settings.reSerialize();
-            } else {    //ファイルが存在しない場合
-
-                //設定画面表示
-                configForm.Show();
+        //設定情報がない場合に、設定画面を表示するメソッド
+        private void ConfigFormDisplay() {
+            if (!settings.ConfigurationData) {
+                MessageBox.Show("データが未設定です");
+                configForm.ShowDialog();
             }
+        }
+
+        private void btConfig_Click(object sender, EventArgs e) {
+            configForm.ShowDialog();
         }
     }
 }
