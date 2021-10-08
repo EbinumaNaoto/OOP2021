@@ -32,34 +32,24 @@ namespace SendMail {
 
         //適用設定
         private void btApply_Click(object sender, EventArgs e) {
-            SettingRegist();
+            //Settingオブジェクトに入力データを渡して登録
+            settings.setSendConfig(tbHost.Text, int.Parse(tbPort.Text), tbUserName.Text, tbPass.Text, cbSSL.Checked);
         }
 
         //OK設定
         private void btOK_Click(object sender, EventArgs e) {
-            SettingRegist();
+            btApply_Click(sender, e);
 
             this.Close();
         }
 
         //キャンセル設定
         private void btCancel_Click(object sender, EventArgs e) {
+            if (!settings.ConfigurationData) {
+                MessageBox.Show("データが未設定です");
+                return;
+            }
             this.Close();
-        }
-
-        //送信データ登録
-        private void SettingRegist() {
-
-            settings.Host = tbHost.Text;
-            settings.Port = int.Parse(tbPort.Text);
-            settings.MailAddr = tbUserName.Text;
-            settings.Pass = tbPass.Text;
-            settings.SSL = cbSSL.Checked;
-
-            //送信データが入力されたことを記録する。
-            settings.ConfigurationData = true;
-
-            settings.serialize();
         }
 
         private void ConfigForm_Load(object sender, EventArgs e) {

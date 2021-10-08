@@ -34,7 +34,18 @@ namespace SendMail {
         //送信ボタン
         private void btSend_Click(object sender, EventArgs e) {
             try {
+                //未入力チェック
+                if (string.IsNullOrWhiteSpace(tbTo.Text) | string.IsNullOrWhiteSpace(tbMessage.Text)) {
+                    MessageBox.Show("未入力項目があります。");
+                    return;
+                }
+
+                //送信中に送信ボタンを押せなくする
+                btSend.Enabled = false;
+
+                //データが登録されているかの確認
                 ConfigFormDisplay();
+
                 //メール送信のためのインスタンスを生成
                 var mailMessage = new MailMessage();
                 //差出人アドレス
@@ -42,11 +53,11 @@ namespace SendMail {
                 //宛先(To)
                 mailMessage.To.Add(tbTo.Text);
                 //宛先(Cc)
-                if (!string.IsNullOrEmpty(tbCc.Text)) {
+                if (!string.IsNullOrWhiteSpace(tbCc.Text)) {
                     mailMessage.CC.Add(tbCc.Text);
                 }
                 //宛先(Bcc)
-                if (!string.IsNullOrEmpty(tbBcc.Text)) {
+                if (!string.IsNullOrWhiteSpace(tbBcc.Text)) {
                     mailMessage.Bcc.Add(tbBcc.Text);
                 }
                 //件名(タイトル)
@@ -70,6 +81,7 @@ namespace SendMail {
             } catch (Exception ex) {
 
                 MessageBox.Show(ex.Message);
+                btSend.Enabled = true;
 
             }
         }
@@ -81,10 +93,14 @@ namespace SendMail {
                 MessageBox.Show(e.Error.Message);
             } else {
                 MessageBox.Show("送信完了");
+                //送信完了後に各入力テキストをクリア
+                newCreateToolStripMenuItem_Click(sender, e);
             }
+            btSend.Enabled = true;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            //データが登録されているかの確認
             ConfigFormDisplay();
         }
 
@@ -98,6 +114,20 @@ namespace SendMail {
 
         private void btConfig_Click(object sender, EventArgs e) {
             configForm.ShowDialog();
+        }
+
+        //新規作成ボタン
+        private void newCreateToolStripMenuItem_Click(object sender, EventArgs e) {
+            tbTo.Clear();
+            tbCc.Clear();
+            tbBcc.Clear();
+            tbTitle.Clear();
+            tbMessage.Clear();
+        }
+
+        //終了ボタン
+        private void endToolStripMenuItem_Click(object sender, EventArgs e) {
+            Close();
         }
     }
 }

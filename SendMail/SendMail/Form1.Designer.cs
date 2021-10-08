@@ -35,14 +35,23 @@ namespace SendMail {
             this.tbCc = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tbBcc = new System.Windows.Forms.TextBox();
-            this.btConfig = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ファイルFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newCreateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.endToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.編集EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ヘルプHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(54, 7);
+            this.label1.Location = new System.Drawing.Point(51, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 24);
@@ -53,7 +62,7 @@ namespace SendMail {
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(32, 112);
+            this.label2.Location = new System.Drawing.Point(29, 131);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 24);
@@ -64,7 +73,7 @@ namespace SendMail {
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(32, 145);
+            this.label3.Location = new System.Drawing.Point(29, 164);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 24);
@@ -74,7 +83,7 @@ namespace SendMail {
             // tbTo
             // 
             this.tbTo.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbTo.Location = new System.Drawing.Point(102, 7);
+            this.tbTo.Location = new System.Drawing.Point(99, 26);
             this.tbTo.Margin = new System.Windows.Forms.Padding(2);
             this.tbTo.Name = "tbTo";
             this.tbTo.Size = new System.Drawing.Size(490, 31);
@@ -83,7 +92,7 @@ namespace SendMail {
             // tbMessage
             // 
             this.tbMessage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbMessage.Location = new System.Drawing.Point(102, 147);
+            this.tbMessage.Location = new System.Drawing.Point(99, 166);
             this.tbMessage.Margin = new System.Windows.Forms.Padding(2);
             this.tbMessage.Multiline = true;
             this.tbMessage.Name = "tbMessage";
@@ -93,7 +102,7 @@ namespace SendMail {
             // tbTitle
             // 
             this.tbTitle.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbTitle.Location = new System.Drawing.Point(102, 112);
+            this.tbTitle.Location = new System.Drawing.Point(99, 131);
             this.tbTitle.Margin = new System.Windows.Forms.Padding(2);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(490, 31);
@@ -102,7 +111,7 @@ namespace SendMail {
             // btSend
             // 
             this.btSend.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btSend.Location = new System.Drawing.Point(498, 430);
+            this.btSend.Location = new System.Drawing.Point(495, 449);
             this.btSend.Margin = new System.Windows.Forms.Padding(2);
             this.btSend.Name = "btSend";
             this.btSend.Size = new System.Drawing.Size(94, 35);
@@ -115,7 +124,7 @@ namespace SendMail {
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(53, 40);
+            this.label4.Location = new System.Drawing.Point(50, 59);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 24);
@@ -125,7 +134,7 @@ namespace SendMail {
             // tbCc
             // 
             this.tbCc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbCc.Location = new System.Drawing.Point(102, 42);
+            this.tbCc.Location = new System.Drawing.Point(99, 61);
             this.tbCc.Margin = new System.Windows.Forms.Padding(2);
             this.tbCc.Name = "tbCc";
             this.tbCc.Size = new System.Drawing.Size(490, 31);
@@ -135,7 +144,7 @@ namespace SendMail {
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(41, 75);
+            this.label5.Location = new System.Drawing.Point(38, 94);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 24);
@@ -145,29 +154,89 @@ namespace SendMail {
             // tbBcc
             // 
             this.tbBcc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbBcc.Location = new System.Drawing.Point(102, 77);
+            this.tbBcc.Location = new System.Drawing.Point(99, 96);
             this.tbBcc.Margin = new System.Windows.Forms.Padding(2);
             this.tbBcc.Name = "tbBcc";
             this.tbBcc.Size = new System.Drawing.Size(490, 31);
             this.tbBcc.TabIndex = 1;
             // 
-            // btConfig
+            // menuStrip1
             // 
-            this.btConfig.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btConfig.Location = new System.Drawing.Point(8, 430);
-            this.btConfig.Name = "btConfig";
-            this.btConfig.Size = new System.Drawing.Size(94, 33);
-            this.btConfig.TabIndex = 3;
-            this.btConfig.Text = "設定";
-            this.btConfig.UseVisualStyleBackColor = true;
-            this.btConfig.Click += new System.EventHandler(this.btConfig_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ファイルFToolStripMenuItem,
+            this.編集EToolStripMenuItem,
+            this.ヘルプHToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(600, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ファイルFToolStripMenuItem
+            // 
+            this.ファイルFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newCreateToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.設定ToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.endToolStripMenuItem});
+            this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
+            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ファイルFToolStripMenuItem.Text = "ファイル(&F)";
+            // 
+            // newCreateToolStripMenuItem
+            // 
+            this.newCreateToolStripMenuItem.Name = "newCreateToolStripMenuItem";
+            this.newCreateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.N)));
+            this.newCreateToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.newCreateToolStripMenuItem.Text = "新規作成";
+            this.newCreateToolStripMenuItem.Click += new System.EventHandler(this.newCreateToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(193, 6);
+            // 
+            // 設定ToolStripMenuItem
+            // 
+            this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
+            this.設定ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.設定ToolStripMenuItem.Text = "設定...";
+            this.設定ToolStripMenuItem.Click += new System.EventHandler(this.btConfig_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(193, 6);
+            // 
+            // endToolStripMenuItem
+            // 
+            this.endToolStripMenuItem.Name = "endToolStripMenuItem";
+            this.endToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.endToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.endToolStripMenuItem.Text = "終了(&X)";
+            this.endToolStripMenuItem.Click += new System.EventHandler(this.endToolStripMenuItem_Click);
+            // 
+            // 編集EToolStripMenuItem
+            // 
+            this.編集EToolStripMenuItem.Name = "編集EToolStripMenuItem";
+            this.編集EToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.編集EToolStripMenuItem.Text = "編集(&E)";
+            // 
+            // ヘルプHToolStripMenuItem
+            // 
+            this.ヘルプHToolStripMenuItem.Name = "ヘルプHToolStripMenuItem";
+            this.ヘルプHToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.ヘルプHToolStripMenuItem.Text = "ヘルプ(&H)";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 476);
-            this.Controls.Add(this.btConfig);
+            this.ClientSize = new System.Drawing.Size(600, 490);
             this.Controls.Add(this.btSend);
             this.Controls.Add(this.tbTitle);
             this.Controls.Add(this.tbMessage);
@@ -179,10 +248,14 @@ namespace SendMail {
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "メール送信アプリ";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,7 +274,15 @@ namespace SendMail {
         private System.Windows.Forms.TextBox tbCc;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbBcc;
-        private System.Windows.Forms.Button btConfig;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ファイルFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newCreateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem 設定ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem endToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 編集EToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ヘルプHToolStripMenuItem;
     }
 }
 
