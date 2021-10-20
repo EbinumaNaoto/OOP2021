@@ -13,8 +13,8 @@ namespace SampleEntityFramework {
         static void Main(string[] args) {
 
             //13.1.1
-            Exercise13_1();
-            Console.WriteLine("------");
+            //Exercise13_1();
+            //Console.WriteLine("------");
 
             //13.1.2
             Exercise13_2();
@@ -30,6 +30,8 @@ namespace SampleEntityFramework {
 
             //13.1.5
             Exercise13_5();
+
+            Console.ReadLine(); //F5で実行してもすぐコンソール画面が消えないようにする
         }
 
         private static void Exercise13_1() {
@@ -87,16 +89,42 @@ namespace SampleEntityFramework {
         }
 
         private static void Exercise13_2() {
-
+            using (var db = new BooksDbContext()) {
+                var books = db.Books.ToList();
+                foreach (var book in books) {
+                    Console.WriteLine($"タイトル:{book.Title} 発行年:{book.PublishedYear} 著者名:{book.Author.Name}");
+                }
+            }
         }
 
         private static void Exercise13_3() {
+            using (var db = new BooksDbContext()) {
+                var longTitleBooks = db.Books.Where(b => b.Title.Length == db.Books.Max(x => x.Title.Length)).ToList();
+                foreach (var book in longTitleBooks) {
+                    Console.WriteLine($"タイトル:{book.Title} 発行年:{book.PublishedYear} 著者名:{book.Author.Name}");
+                }
+            }
         }
 
         private static void Exercise13_4() {
+            using (var db = new BooksDbContext()) {
+                var oldBooks = db.Books.OrderBy(b => b.PublishedYear).Take(3).ToList();
+                foreach (var book in oldBooks) {
+                    Console.WriteLine($"タイトル:{book.Title} 著者名:{book.Author.Name}");
+                }
+            }
         }
 
         private static void Exercise13_5() {
+            using (var db = new BooksDbContext()) {
+                var authors = db.Authors.OrderByDescending(a => a.Birthday).ToList();
+                foreach (var author in authors) {
+                    Console.WriteLine($"著者名:{author.Name}");
+                    foreach (var book in author.Books) {
+                        Console.WriteLine($"タイトル{book.Title} 発行年{book.PublishedYear}");
+                    }
+                }
+            }
         }
 
         //自動マイグレーション
