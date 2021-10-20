@@ -31,6 +31,9 @@ namespace SampleEntityFramework {
             //13.1.5
             Exercise13_5();
 
+            //その他問題
+            Exercise13_6();
+
             Console.ReadLine(); //F5で実行してもすぐコンソール画面が消えないようにする
         }
 
@@ -123,8 +126,54 @@ namespace SampleEntityFramework {
                     foreach (var book in author.Books) {
                         Console.WriteLine($"タイトル{book.Title} 発行年{book.PublishedYear}");
                     }
+                    Console.WriteLine();
                 }
             }
+        }
+
+        private static void Exercise13_6() {
+            using (var db = new BooksDbContext()) {
+                var author = getAuthor(db);
+                var book = new Book {
+                    Title = getTitle(),
+                    PublishedYear = getPublishedYear(),
+                    Author = author
+                };
+                db.Books.Add(book);
+                db.SaveChanges();
+            }
+        }
+
+        //入力されたタイトルを返す
+        private static string getTitle() {
+            Console.Write("タイトルを入力してください:");
+            return Console.ReadLine();
+        }
+
+        //入力された発行年を返す
+        private static int getPublishedYear() {
+            Console.Write("発行年を入力してください:");
+            return int.Parse(Console.ReadLine());
+        }
+
+        //登録されている著者から選択されたAuthorを返す
+        private static Author getAuthor(BooksDbContext db)  {
+            db.Authors.ToList().ForEach(a => Console.Write($"{a.Name}, "));
+            Console.Write("\r\n登録されている著者名を入力してください。:");
+            var authorName = Console.ReadLine();
+            return db.Authors.Single(a => a.Name == authorName);
+            /*
+            var authors = db.Authors.ToArray();
+            for (int i = 0; i < authors.Length; i++) {
+                Console.Write($"{i + 1} {authors[i].Name},");
+            }
+            Console.Write($"{authors.Length+1} その他\r\n選択したいもしくは新しく登録したい著者名番号を入力してください。:");
+            var authorName = int.Parse(Console.ReadLine());
+            if (authorName == (authors.Length+1)) {
+                //新しく登録するAuthorの処理
+            }
+            return db.Authors.Single(a => a.Name == authorName);
+            */
         }
 
         //自動マイグレーション
