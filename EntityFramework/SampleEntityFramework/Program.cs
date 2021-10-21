@@ -32,7 +32,7 @@ namespace SampleEntityFramework {
             Exercise13_5();
 
             //その他問題
-            Exercise13_6();
+            //Exercise13_6();
 
             Console.ReadLine(); //F5で実行してもすぐコンソール画面が消えないようにする
         }
@@ -93,25 +93,24 @@ namespace SampleEntityFramework {
 
         private static void Exercise13_2() {
             using (var db = new BooksDbContext()) {
-                var books = db.Books.ToList();
-                foreach (var book in books) {
-                    Console.WriteLine($"タイトル:{book.Title} 発行年:{book.PublishedYear} 著者名:{book.Author.Name}");
+                foreach (var book in db.Books) {
+                    Console.WriteLine($"タイトル:{book.Title} 発行年:{book.PublishedYear} 著者名:{book.Author.Name}({book.Author.Birthday:yyyy/MM/dd})");
                 }
             }
         }
 
         private static void Exercise13_3() {
             using (var db = new BooksDbContext()) {
-                var longTitleBooks = db.Books.Where(b => b.Title.Length == db.Books.Max(x => x.Title.Length)).ToList();
+                var longTitleBooks = db.Books.Where(b => b.Title.Length == db.Books.Max(x => x.Title.Length));
                 foreach (var book in longTitleBooks) {
-                    Console.WriteLine($"タイトル:{book.Title} 発行年:{book.PublishedYear} 著者名:{book.Author.Name}");
+                    Console.WriteLine($"タイトル:{book.Title} 発行年:{book.PublishedYear} 著者名:{book.Author.Name}({book.Author.Birthday:yyyy/MM/dd})");
                 }
             }
         }
 
         private static void Exercise13_4() {
             using (var db = new BooksDbContext()) {
-                var oldBooks = db.Books.OrderBy(b => b.PublishedYear).Take(3).ToList();
+                var oldBooks = db.Books.OrderBy(b => b.PublishedYear).Take(3);
                 foreach (var book in oldBooks) {
                     Console.WriteLine($"タイトル:{book.Title} 著者名:{book.Author.Name}");
                 }
@@ -120,9 +119,9 @@ namespace SampleEntityFramework {
 
         private static void Exercise13_5() {
             using (var db = new BooksDbContext()) {
-                var authors = db.Authors.OrderByDescending(a => a.Birthday).ToList();
+                var authors = db.Authors.OrderByDescending(a => a.Birthday);
                 foreach (var author in authors) {
-                    Console.WriteLine($"著者名:{author.Name}");
+                    Console.WriteLine($"著者名:{author.Name}({author.Birthday:yyyy/MM/dd})");
                     foreach (var book in author.Books) {
                         Console.WriteLine($"タイトル{book.Title} 発行年{book.PublishedYear}");
                     }
@@ -156,24 +155,51 @@ namespace SampleEntityFramework {
             return int.Parse(Console.ReadLine());
         }
 
+        //入力された名前を返す
+        private static string getName() {
+            Console.Write("著者の名前を入力してください:");
+            return Console.ReadLine();
+        }
+
+        //入力された誕生日を返す
+        private static DateTime getBirthday() {
+            Console.Write("著者の誕生日を入力してください(入力形式:yyyy/MM/dd):");
+            var words = Console.ReadLine().Split('/');
+            return new DateTime(int.Parse(words[0]), int.Parse(words[1]), int.Parse(words[2]));
+        }
+
+        //入力された性別を返す
+        private static string getGender() {
+            Console.Write("著者の性別をアルファベットの頭文字で入力してください(例:男性 M,女性 F):");
+            return Console.ReadLine();
+        }
+
         //登録されている著者から選択されたAuthorを返す
         private static Author getAuthor(BooksDbContext db)  {
-            db.Authors.ToList().ForEach(a => Console.Write($"{a.Name}, "));
-            Console.Write("\r\n登録されている著者名を入力してください。:");
-            var authorName = Console.ReadLine();
-            return db.Authors.Single(a => a.Name == authorName);
-            /*
+            //db.Authors.ToList().ForEach(a => Console.Write($"{a.Name}, "));
+            //Console.Write("\r\n登録されている著者名を入力してください。:");
+            //var authorName = Console.ReadLine();
+            //return db.Authors.Single(a => a.Name == authorName);
+
             var authors = db.Authors.ToArray();
             for (int i = 0; i < authors.Length; i++) {
                 Console.Write($"{i + 1} {authors[i].Name},");
             }
             Console.Write($"{authors.Length+1} その他\r\n選択したいもしくは新しく登録したい著者名番号を入力してください。:");
-            var authorName = int.Parse(Console.ReadLine());
-            if (authorName == (authors.Length+1)) {
+            var authorNumber = int.Parse(Console.ReadLine());
+            if (authorNumber == (authors.Length+1)) {
                 //新しく登録するAuthorの処理
+                var author = new Author {
+                    Birthday = getBirthday(),
+                    Gender = getGender(),
+                    Name = getName()
+                };
+                db.Authors.Add(author);
+                db.SaveChanges();
+                return author;
             }
-            return db.Authors.Single(a => a.Name == authorName);
-            */
+            return db.Authors.Single(a => a.Name == authors[authorNumber].Name);
+            
         }
 
         //自動マイグレーション
