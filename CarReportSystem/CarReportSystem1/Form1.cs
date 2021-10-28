@@ -103,8 +103,8 @@ namespace CarReportSystem1 {
             }
         }
 
-        //開くボタン
-        private void btOpen_Click(object sender, EventArgs e) {
+        //接続ボタン
+        private void btConnect_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202127DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableAdapter.Fill(this.infosys202127DataSet.CarReport);
 #if false
@@ -161,15 +161,20 @@ namespace CarReportSystem1 {
 #endif
         }
 
-        //保存ボタン
-        private void btSave_Click(object sender, EventArgs e) {
+        //更新ボタン
+        private void btUpdate_Click(object sender, EventArgs e) {
             if (carReportDataGridView.CurrentRow == null) return;
-            carReportDataGridView.CurrentRow.Cells[1].Value = dtpDate.Value; //日付
-            carReportDataGridView.CurrentRow.Cells[2].Value = cbAuthor.Text; //記録者
-            carReportDataGridView.CurrentRow.Cells[3].Value = selectedGroup(); //メーカー
-            carReportDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text; //車名
-            carReportDataGridView.CurrentRow.Cells[5].Value = tbReport.Text; //レポート
 
+            carReportDataGridView.CurrentRow.Cells[1].Value = dtpDate.Value;    //日付
+            carReportDataGridView.CurrentRow.Cells[2].Value = cbAuthor.Text;   //記録者
+            carReportDataGridView.CurrentRow.Cells[3].Value = selectedGroup();//メーカー
+            carReportDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text;//車名
+            carReportDataGridView.CurrentRow.Cells[5].Value = tbReport.Text;//レポート
+
+            //データベースへ反映
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202127DataSet);
 #if false
             if (sfdFileSave.ShowDialog() == DialogResult.OK) {
                 try {
@@ -190,9 +195,6 @@ namespace CarReportSystem1 {
         }
 
         private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
-            this.Validate();
-            this.carReportBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.infosys202127DataSet);
 
         }
     }
