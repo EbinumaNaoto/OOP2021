@@ -38,27 +38,6 @@ namespace CarReportSystem1 {
             pbPicture.Image = null;
         }
 
-        //追加ボタン
-        private void btDataAdd_Click(object sender, EventArgs e) {
-            if (cbCarName.Text == "" || cbAuthor.Text == "") {
-                MessageBox.Show("入力されていません");
-                return;
-            }
-
-            CarReport carReport = new CarReport { 
-                Date = dtpDate.Value ,
-                Auther = cbAuthor.Text ,
-                Maker = selectedGroup() ,
-                CarName = cbCarName.Text ,
-                Report = tbReport.Text ,
-                Picture = pbPicture.Image,
-            };
-            listCarReport.Add(carReport);
-
-            setCbAuthor(cbAuthor.Text);
-            setCbCarName(cbCarName.Text);
-        }
-
         //選択されているメーカーの列挙を返す
         private CarReport.MakerGroup selectedGroup() {
             foreach (var rb in gbMaker.Controls) {
@@ -91,6 +70,7 @@ namespace CarReportSystem1 {
                     return;
                 }
             }
+            ((RadioButton)gbMaker.Controls[0]).Checked = true;
         }
 
         //listCarReportを表示する
@@ -113,6 +93,11 @@ namespace CarReportSystem1 {
         private void btConnect_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202127DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableAdapter.Fill(this.infosys202127DataSet.CarReport);
+            for (int i = 1; i < carReportDataGridView.RowCount; i++) {
+                setCbAuthor(carReportDataGridView.Rows[i-1].Cells[2].Value.ToString());
+                setCbCarName(carReportDataGridView.Rows[i-1].Cells[4].Value.ToString());
+            }
+
 #if false
             if (ofdFileOpen.ShowDialog() == DialogResult.OK) {
                 try {
@@ -145,25 +130,6 @@ namespace CarReportSystem1 {
                     Console.WriteLine(serializationException.Message);
                 }
             }
-#endif
-        }
-
-        //削除ボタン
-        private void btDataDelete_Click(object sender, EventArgs e) {
-#if false
-            if (dgvRegistData.CurrentRow == null)
-                return;
-            listCarReport.RemoveAt(dgvRegistData.CurrentRow.Index);
-#endif
-        }
-
-        //修正ボタン
-        private void btDataCorrect_Click(object sender, EventArgs e) {
-#if false
-            if (dgvRegistData.CurrentRow == null)
-                return;
-            listCarReport[dgvRegistData.CurrentRow.Index].UpDate(dtpDate.Value,cbAuthor.Text,selectedGroup(),cbCarName.Text,tbReport.Text,pbPicture.Image);
-            dgvRegistData.Refresh();    //コントロールの強制再描画
 #endif
         }
 
@@ -208,10 +174,6 @@ namespace CarReportSystem1 {
             carReportDataGridView.Columns[6].Visible = false;
         }
 
-        private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
-
-        }
-
         //DataGridViewが選択された時の処理
         private void carReportDataGridView_SelectionChanged(object sender, EventArgs e) {
             if (carReportDataGridView.CurrentRow == null) return;
@@ -223,12 +185,9 @@ namespace CarReportSystem1 {
                 cbCarName.Text = carReportDataGridView.CurrentRow.Cells[4].Value.ToString(); //車名
                 tbReport.Text = carReportDataGridView.CurrentRow.Cells[5].Value.ToString(); //レポート
                 pbPicture.Image = ByteArrayToImage((byte[])carReportDataGridView.CurrentRow.Cells[6].Value); //写真
-                setCbAuthor(cbAuthor.Text); //記録者をセット
-                setCbCarName(cbCarName.Text); //車名をセット
             } catch (Exception) {
                 pbPicture.Image = null;
             }
-            
         }
 
         // バイト配列をImageオブジェクトに変換
@@ -243,6 +202,27 @@ namespace CarReportSystem1 {
             ImageConverter imgconv = new ImageConverter();
             byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
             return b;
+        }
+
+        //エラー処理
+        private void carReportDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+
+        }
+
+        //新規作成をクリックしたときに呼ばれるイベントハンドラ
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e) {
+            if (carReportDataGridView.CurrentRow == null) return;
+
+            try {
+                dtpDate.Value = DateTime.Today; //日付
+                cbAuthor.Text = ""; //記録者
+                setMakerRadioButton("その他"); //メーカー
+                cbCarName.Text = ""; //車名
+                tbReport.Text = ""; //レポート
+                pbPicture.Image = null; //写真
+            } catch (Exception) {
+                pbPicture.Image = null;
+            }
         }
     }
 }
