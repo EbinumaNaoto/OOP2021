@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Section03 {
 
     // List 7-20
-    class Program le{
+    class Program {
         static void Main(string[] args) {
             // コンストラクタ呼び出し
             var abbrs = new Abbreviations();
