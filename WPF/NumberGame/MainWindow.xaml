@@ -4,24 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumberGame"
+        x:Name="MainForm"
         mc:Ignorable="d"
-        Title="数字当てゲーム" Height="310" Width="266">
-    <Grid x:Name="gridPanel">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Label x:Name="answerLabel" Grid.Row="5" Grid.ColumnSpan="5"/>
-    </Grid>
+        Title="数字当てゲーム" Width="800" Height="800" Loaded="Window_Loaded">
+    <StackPanel>
+        <Grid x:Name="gridPanel">
+            <TextBlock x:Name="answerText" Height="30" FontSize="15"
+                       TextWrapping="Wrap" Text="TextBlock" Margin="0,738,0,-738"/>
+        </Grid>
+    </StackPanel>
 </Window>
