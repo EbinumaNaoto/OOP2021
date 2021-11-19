@@ -40,9 +40,9 @@ namespace Pelmanism {
             Enabled = false; //選択不可
         }
 
-        //カードをオープンする
+        //カードを伏せる
         public void Close() {
-            State = false; //表
+            State = false; //裏
             BackColor = CloseColor;
             Text = "";
             Enabled = true; //選択可
