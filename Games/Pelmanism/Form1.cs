@@ -12,7 +12,7 @@ namespace Pelmanism {
     public partial class FormGame : Form {
 
         private Card[] playingCards;    //遊ぶカードの束
-        private Player player;       //プレイヤー
+        private Player player;          //プレイヤー
         private int gameSec;            //ゲーム時間
 
         public FormGame() {
@@ -145,7 +145,7 @@ namespace Pelmanism {
                 card.Close();
             }
             buttonStart.Enabled = false; //スタートボタン選択不可
-            gameSec = 0;
+            gameSec = 180;
             timer1.Start();
 
             labelGuidance.Text = "クリックしてカードをめくってください。";
@@ -167,8 +167,18 @@ namespace Pelmanism {
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
-            gameSec++;
-            labelSec.Text = gameSec + "秒経過";
+            if (gameSec == 0) {
+                labelGuidance.Text = "時間切れです。もう一度チャレンジしてください。";
+                timer1.Stop();
+                foreach (var card in playingCards) {
+                    card.Enabled = false;
+                }
+                buttonStart.Enabled = true; //スタートボタン選択可
+
+            } else if (gameSec > 0) {
+                gameSec--;
+                labelSec.Text = "残り" + gameSec + "秒";
+            }
         }
     }
 }
