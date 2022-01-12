@@ -1,0 +1,38 @@
+﻿<Window x:Class="PrototypeSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrototypeSystem"
+        mc:Ignorable="d"
+        Title="グルメアプリケーション" Height="1000" Width="1900">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="LogOutButton" Content="ログアウト" Width="100" Height="30" Margin="20"/>
+            <Button x:Name="ChangeButton" Content="変更" Width="100" Height="30" Margin="20"/>
+            <Button x:Name="FavoriteButton" Content="お気に入り登録" Width="100" Height="30" Margin="20"/>
+            <TextBlock x:Name="UserNameTextBlock" Text="グルメ太郎様👤" FontSize="30" Height="40" Margin="30,0,50,0"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock Text="店舗名" FontSize="15" Margin="30,0,0,0"/>
+            <TextBlock Text="ジャンル" FontSize="15" Margin="1320,0,0,0"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBox x:Name="StoreNameTextBox" Width="1300" FontSize="30" Margin="30,0,0,0"/>
+            <ComboBox x:Name="GenreComboBox" FontSize="30" Width="250" Margin="65,0,65,0"/>
+            <Button x:Name="SearchButton" Content="検索" FontSize="30" Width="130"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock Text="検索結果" FontSize="15"/>
+            <TextBlock Text="お気に入り店舗一覧" FontSize="15" Margin="940,0,0,0"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" HorizontalAlignment="Left">
+            <DataGrid x:Name="ResultDataGrid" Width="1000"/>
+        </StackPanel>
+        <StackPanel>
+            <DataGrid x:Name="FavoriteStoreNameDataGrid" Width="890" Height="395"/>
+            <TextBlock Text="近くのおすすめ店舗一覧" FontSize="15"/>
+            <DataGrid x:Name="NearbyShopDataGrid" Width="890" Height="395"/>
+        </StackPanel>
+    </DockPanel>
+</Window>

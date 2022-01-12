@@ -44,7 +44,6 @@ namespace Pelmanism {
         public void Close() {
             State = false; //裏
             BackColor = CloseColor;
-            Text = "";
             Enabled = true; //選択可
         }
 
